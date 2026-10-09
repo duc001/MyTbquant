@@ -6,15 +6,10 @@ __pycache__/
 # 虚拟环境
 .venv/
 
-# tbpy 运行时生成的日志
-log/
-
-# 应用统一日志（sell_option/logs/）按用户要求入库跟踪
+# 应用统一日志（sell_option/logs/）与根目录 log/（tbpy 运行时日志）均按用户要求入库跟踪
 
 # IDE
 .idea/
 
-# 运行时数据：行情缓存 db（daily/spot/premium/iv_snapshot/calendar）与 positions.db 均按用户要求入库跟踪；
-# main_month.json 为构建产物，仍忽略
-sell_option/data/main_month.json
+# 运行时数据：行情缓存 db、positions.db、main_month.json 均按用户要求入库跟踪
 
