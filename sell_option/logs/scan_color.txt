@@ -1,0 +1,784 @@
+2026-10-10 00:13:05 | INFO  | root | logutil.setup_logging:238 | ========================================================================
+2026-10-10 00:13:05 | INFO  | root | logutil.setup_logging:239 | 统一日志启动 · 文件=D:\PythonProject\MyTbquant\sell_option\logs\app-2026-10-10.log · 命令即将执行
+2026-10-10 00:13:05 | INFO  | sell_option.strategy.cli | cli.cmd_scan:359 | >>> 进入 cmd_scan · 请求参数=(((CliRuntime(th=ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, …(+1128))
+2026-10-10 00:13:05 | INFO  | sell_option.strategy.cli | cli.cmd_scan:366 | scan 启动：全池 47 品种 · 时段=命令覆盖：--session closed（强制休市·粗筛）
+2026-10-10 00:13:05 | INFO  | app.flow | cli.cmd_scan:367 | >>> 开始 scan 全池扫描 · 入参=品种数=47 时段='命令覆盖：--session closed（强制休市·粗筛）'
+2026-10-10 00:13:05 | INFO  | app.flow | cli.cmd_scan:370 | >>> 开始 预取 现货/指数 · 入参=时段='命令覆盖：--session closed（强制休市·粗筛）'
+2026-10-10 00:13:05 | INFO  | app.stdout | cli._prewarm:352 | [prewarm] spot：125 候选月合约 → 批量取现价（≤20/批 + 62s）…
+2026-10-10 00:13:05 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=47 · 报价=125 · 源分布={'daily_close': 125} · 状态={'PASS': 125}
+2026-10-10 00:13:05 | INFO  | app.stdout | cli._prewarm:354 | [prewarm] index：47 品种 → 批量取指数日线…
+2026-10-10 00:13:05 | INFO  | app.stdout | cli._prewarm:356 | [prewarm] 现货/指数预取完成；期权权利金+OI 由 run_pool 逐品种取数（首跑后 premium.db 缓存、重跑秒回）。
+2026-10-10 00:13:05 | INFO  | app.flow | cli.cmd_scan:370 | <<< 结束 预取 现货/指数 (耗时 93ms)
+2026-10-10 00:13:05 | INFO  | app.flow | cli.cmd_scan:375 | >>> 开始 run_pool 全池取数+检查 · 入参=品种数=47 时段='命令覆盖：--session closed（强制休市·粗筛）'
+2026-10-10 00:13:05 | INFO  | sell_option.strategy.runner | runner.run_pool:104 | >>> 进入 run_pool · 请求参数=(((['AP', 'CF', 'CJ', 'FG', 'MA', 'OI', 'PF', 'PK', 'PX', 'RM', 'SA', 'SF', 'SH', 'SM', 'SR', 'TA', 'UR', 'a', 'b', 'c', 'cs', 'eb', 'eg', 'i', 'j', 'jd', 'jm', 'l', 'lg', 'lh', 'm', 'p', 'pg', 'pp', 'v', 'y', 'lc', 'ps', 'si', 'ao', 'br', 'bu', 'fu', 'hc', 'pb', 'rb', 'sp'], ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.…(+800))
+2026-10-10 00:13:05 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('AP', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_pre…(+532))
+2026-10-10 00:13:05 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='AP' session_open=False
+2026-10-10 00:13:05 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=3 · 源分布={'daily_close': 3} · 状态={'PASS': 3}
+2026-10-10 00:13:05 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：2 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=2（不占 60s 令牌）
+2026-10-10 00:13:08 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:13:08 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=2 · 权利金 报价=2 分布={'PASS': 2} · OI 报价=2 分布={'PASS': 2} · 命中缓存=2
+2026-10-10 00:13:08 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble AP：取数装配完成 · R净权利金=123.0 · 价差宽=400.0 · 最大亏损=2770.0 · 保证金=8270.702000000001 · 乘数=10.0
+2026-10-10 00:13:08 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2837ms)
+2026-10-10 00:13:08 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='AP' session_open=False
+2026-10-10 00:13:08 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:13:08 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='AP' verdict='FAIL'
+2026-10-10 00:13:08 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:13:08 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · AP · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:13:08 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='AP', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='AP', structure='single', premium=PremiumSet(quotes={'AP701C6900.CZCE': PremiumQuote(symbol='AP701C6900.CZCE', code='AP', underlying_month='2701', cp='C', strike=6900.0, role='short', bid=None, ask=None, last=None, mid=None, spread…(+42912) (耗时 2839ms)
+2026-10-10 00:13:08 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('CF', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_pre…(+532))
+2026-10-10 00:13:08 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='CF' session_open=False
+2026-10-10 00:13:08 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=2 · 源分布={'daily_close': 2} · 状态={'PASS': 2}
+2026-10-10 00:13:08 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：2 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=2（不占 60s 令牌）
+2026-10-10 00:13:10 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:13:10 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=2 · 权利金 报价=2 分布={'PASS': 2} · OI 报价=2 分布={'PASS': 2} · 命中缓存=2
+2026-10-10 00:13:10 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble CF：取数装配完成 · R净权利金=191.0 · 价差宽=800.0 · 最大亏损=3045.0 · 保证金=7850.0 · 乘数=5.0
+2026-10-10 00:13:10 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2341ms)
+2026-10-10 00:13:10 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='CF' session_open=False
+2026-10-10 00:13:10 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 2ms)
+2026-10-10 00:13:10 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='CF' verdict='FAIL'
+2026-10-10 00:13:10 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:13:10 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · CF · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:13:10 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='CF', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='CF', structure='single', premium=PremiumSet(quotes={'CF701C15800.CZCE': PremiumQuote(symbol='CF701C15800.CZCE', code='CF', underlying_month='2701', cp='C', strike=15800.0, role='short', bid=None, ask=None, last=None, mid=None, spr…(+42391) (耗时 2344ms)
+2026-10-10 00:13:10 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('CJ', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_pre…(+532))
+2026-10-10 00:13:10 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='CJ' session_open=False
+2026-10-10 00:13:10 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=3 · 源分布={'daily_close': 3} · 状态={'PASS': 3}
+2026-10-10 00:13:10 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：2 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=2（不占 60s 令牌）
+2026-10-10 00:13:12 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:13:12 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=2 · 权利金 报价=2 分布={'PASS': 2} · OI 报价=2 分布={'PASS': 2} · 命中缓存=2
+2026-10-10 00:13:12 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble CJ：取数装配完成 · R净权利金=127.0 · 价差宽=400.0 · 最大亏损=1365.0 · 保证金=4083.0 · 乘数=5.0
+2026-10-10 00:13:12 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2215ms)
+2026-10-10 00:13:12 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='CJ' session_open=False
+2026-10-10 00:13:12 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:13:12 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='CJ' verdict='FAIL'
+2026-10-10 00:13:12 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:13:12 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · CJ · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:13:12 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='CJ', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='CJ', structure='single', premium=PremiumSet(quotes={'CJ701C6900.CZCE': PremiumQuote(symbol='CJ701C6900.CZCE', code='CJ', underlying_month='2701', cp='C', strike=6900.0, role='short', bid=None, ask=None, last=None, mid=None, spread…(+42781) (耗时 2217ms)
+2026-10-10 00:13:12 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('FG', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_pre…(+532))
+2026-10-10 00:13:12 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='FG' session_open=False
+2026-10-10 00:13:12 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=3 · 源分布={'daily_close': 3} · 状态={'PASS': 3}
+2026-10-10 00:13:12 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：2 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=2（不占 60s 令牌）
+2026-10-10 00:13:15 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:13:15 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=2 · 权利金 报价=2 分布={'PASS': 2} · OI 报价=2 分布={'PASS': 2} · 命中缓存=2
+2026-10-10 00:13:15 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble FG：取数装配完成 · R净权利金=13.0 · 价差宽=40.0 · 最大亏损=540.0 · 保证金=1787.1200000000001 · 乘数=20.0
+2026-10-10 00:13:15 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2197ms)
+2026-10-10 00:13:15 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='FG' session_open=False
+2026-10-10 00:13:15 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:13:15 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='FG' verdict='FAIL'
+2026-10-10 00:13:15 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:13:15 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · FG · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:13:15 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='FG', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='FG', structure='single', premium=PremiumSet(quotes={'FG612C890.CZCE': PremiumQuote(symbol='FG612C890.CZCE', code='FG', underlying_month='2612', cp='C', strike=890.0, role='short', bid=None, ask=None, last=None, mid=None, spread=No…(+43277) (耗时 2199ms)
+2026-10-10 00:13:15 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('MA', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_pre…(+532))
+2026-10-10 00:13:15 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='MA' session_open=False
+2026-10-10 00:13:15 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=3 · 源分布={'daily_close': 3} · 状态={'PASS': 3}
+2026-10-10 00:13:15 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：2 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=2（不占 60s 令牌）
+2026-10-10 00:13:17 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:13:17 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=2 · 权利金 报价=2 分布={'PASS': 2} · OI 报价=2 分布={'PASS': 2} · 命中缓存=2
+2026-10-10 00:13:17 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble MA：取数装配完成 · R净权利金=87.0 · 价差宽=200.0 · 最大亏损=1130.0 · 保证金=3550.62 · 乘数=10.0
+2026-10-10 00:13:17 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2128ms)
+2026-10-10 00:13:17 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='MA' session_open=False
+2026-10-10 00:13:17 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:13:17 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='MA' verdict='FAIL'
+2026-10-10 00:13:17 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:13:17 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · MA · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:13:17 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='MA', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='MA', structure='single', premium=PremiumSet(quotes={'MA612P3500.CZCE': PremiumQuote(symbol='MA612P3500.CZCE', code='MA', underlying_month='2612', cp='P', strike=3500.0, role='short', bid=None, ask=None, last=None, mid=None, spread…(+43207) (耗时 2130ms)
+2026-10-10 00:13:17 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('OI', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_pre…(+532))
+2026-10-10 00:13:17 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='OI' session_open=False
+2026-10-10 00:13:17 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=2 · 源分布={'daily_close': 2} · 状态={'PASS': 2}
+2026-10-10 00:13:17 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：4 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=4（不占 60s 令牌）
+2026-10-10 00:13:19 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:13:19 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=4 · 权利金 报价=4 分布={'PASS': 4} · OI 报价=4 分布={'PASS': 4} · 命中缓存=4
+2026-10-10 00:13:19 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble OI：取数装配完成 · R净权利金=313.5 · 价差宽=800.0 · 最大亏损=4865.0 · 保证金=10220.952 · 乘数=10.0
+2026-10-10 00:13:19 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2081ms)
+2026-10-10 00:13:19 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='OI' session_open=False
+2026-10-10 00:13:19 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:13:19 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='OI' verdict='FAIL'
+2026-10-10 00:13:19 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:13:19 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · OI · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:13:19 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='OI', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='OI', structure='dual', premium=PremiumSet(quotes={'OI701P10200.CZCE': PremiumQuote(symbol='OI701P10200.CZCE', code='OI', underlying_month='2701', cp='P', strike=10200.0, role='short', bid=None, ask=None, last=None, mid=None, sprea…(+44872) (耗时 2084ms)
+2026-10-10 00:13:19 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('PF', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_pre…(+532))
+2026-10-10 00:13:19 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='PF' session_open=False
+2026-10-10 00:13:19 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=2 · 源分布={'daily_close': 2} · 状态={'PASS': 2}
+2026-10-10 00:13:19 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：2 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=2（不占 60s 令牌）
+2026-10-10 00:13:21 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:13:21 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=2 · 权利金 报价=2 分布={'PASS': 2} · OI 报价=2 分布={'PASS': 2} · 命中缓存=2
+2026-10-10 00:13:21 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble PF：取数装配完成 · R净权利金=624.0 · 价差宽=400.0 · 最大亏损=0.0 · 保证金=4316.740000000001 · 乘数=5.0
+2026-10-10 00:13:21 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2123ms)
+2026-10-10 00:13:21 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='PF' session_open=False
+2026-10-10 00:13:21 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:13:21 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='PF' verdict='FAIL'
+2026-10-10 00:13:21 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:13:21 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · PF · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:13:21 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='PF', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='PF', structure='single', premium=PremiumSet(quotes={'PF612P8500.CZCE': PremiumQuote(symbol='PF612P8500.CZCE', code='PF', underlying_month='2612', cp='P', strike=8500.0, role='short', bid=None, ask=None, last=None, mid=None, spread…(+42341) (耗时 2125ms)
+2026-10-10 00:13:21 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('PK', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_pre…(+532))
+2026-10-10 00:13:21 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='PK' session_open=False
+2026-10-10 00:13:21 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=2 · 源分布={'daily_close': 2} · 状态={'PASS': 2}
+2026-10-10 00:13:21 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：4 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=4（不占 60s 令牌）
+2026-10-10 00:13:23 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:13:23 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=4 · 权利金 报价=4 分布={'PASS': 4} · OI 报价=4 分布={'PASS': 4} · 命中缓存=4
+2026-10-10 00:13:23 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble PK：取数装配完成 · R净权利金=137.5 · 价差宽=400.0 · 最大亏损=1312.5 · 保证金=3953.0 · 乘数=5.0
+2026-10-10 00:13:23 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2136ms)
+2026-10-10 00:13:23 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='PK' session_open=False
+2026-10-10 00:13:23 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:13:23 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='PK' verdict='FAIL'
+2026-10-10 00:13:23 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:13:23 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · PK · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:13:23 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='PK', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='PK', structure='dual', premium=PremiumSet(quotes={'PK612P7900.CZCE': PremiumQuote(symbol='PK612P7900.CZCE', code='PK', underlying_month='2612', cp='P', strike=7900.0, role='short', bid=None, ask=None, last=None, mid=None, spread=N…(+43589) (耗时 2139ms)
+2026-10-10 00:13:23 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('PX', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_pre…(+532))
+2026-10-10 00:13:23 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='PX' session_open=False
+2026-10-10 00:13:23 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=2 · 源分布={'daily_close': 2} · 状态={'PASS': 2}
+2026-10-10 00:13:23 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：2 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=2（不占 60s 令牌）
+2026-10-10 00:13:25 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:13:25 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=2 · 权利金 报价=2 分布={'PASS': 2} · OI 报价=2 分布={'PASS': 2} · 命中缓存=2
+2026-10-10 00:13:25 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble PX：取数装配完成 · R净权利金=265.0 · 价差宽=400.0 · 最大亏损=675.0 · 保证金=4766.229 · 乘数=5.0
+2026-10-10 00:13:25 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2112ms)
+2026-10-10 00:13:25 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='PX' session_open=False
+2026-10-10 00:13:25 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:13:25 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='PX' verdict='FAIL'
+2026-10-10 00:13:25 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:13:25 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · PX · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:13:25 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='PX', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='PX', structure='single', premium=PremiumSet(quotes={'PX701P9500.CZCE': PremiumQuote(symbol='PX701P9500.CZCE', code='PX', underlying_month='2701', cp='P', strike=9500.0, role='short', bid=None, ask=None, last=None, mid=None, spread…(+42313) (耗时 2114ms)
+2026-10-10 00:13:25 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('RM', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_pre…(+532))
+2026-10-10 00:13:25 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='RM' session_open=False
+2026-10-10 00:13:25 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=2 · 源分布={'daily_close': 2} · 状态={'PASS': 2}
+2026-10-10 00:13:25 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：4 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=4（不占 60s 令牌）
+2026-10-10 00:13:27 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:13:27 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=4 · 权利金 报价=4 分布={'PASS': 4} · OI 报价=4 分布={'PASS': 4} · 命中缓存=4
+2026-10-10 00:13:27 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble RM：取数装配完成 · R净权利金=68.5 · 价差宽=100.0 · 最大亏损=315.0 · 保证金=2322.63 · 乘数=10.0
+2026-10-10 00:13:27 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2111ms)
+2026-10-10 00:13:27 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='RM' session_open=False
+2026-10-10 00:13:27 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:13:27 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='RM' verdict='FAIL'
+2026-10-10 00:13:27 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:13:27 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · RM · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:13:27 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='RM', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='RM', structure='dual', premium=PremiumSet(quotes={'RM701P2350.CZCE': PremiumQuote(symbol='RM701P2350.CZCE', code='RM', underlying_month='2701', cp='P', strike=2350.0, role='short', bid=None, ask=None, last=None, mid=None, spread=N…(+43817) (耗时 2113ms)
+2026-10-10 00:13:27 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('SA', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_pre…(+532))
+2026-10-10 00:13:27 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='SA' session_open=False
+2026-10-10 00:13:27 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=3 · 源分布={'daily_close': 3} · 状态={'PASS': 3}
+2026-10-10 00:13:27 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：2 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=2（不占 60s 令牌）
+2026-10-10 00:13:30 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:13:30 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=2 · 权利金 报价=2 分布={'PASS': 2} · OI 报价=2 分布={'PASS': 2} · 命中缓存=2
+2026-10-10 00:13:30 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble SA：取数装配完成 · R净权利金=17.0 · 价差宽=80.0 · 最大亏损=1260.0 · 保证金=1973.664 · 乘数=20.0
+2026-10-10 00:13:30 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2185ms)
+2026-10-10 00:13:30 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='SA' session_open=False
+2026-10-10 00:13:30 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:13:30 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='SA' verdict='FAIL'
+2026-10-10 00:13:30 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:13:30 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · SA · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:13:30 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='SA', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='SA', structure='single', premium=PremiumSet(quotes={'SA612C1020.CZCE': PremiumQuote(symbol='SA612C1020.CZCE', code='SA', underlying_month='2612', cp='C', strike=1020.0, role='short', bid=None, ask=None, last=None, mid=None, spread…(+43269) (耗时 2187ms)
+2026-10-10 00:13:30 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('SF', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_pre…(+532))
+2026-10-10 00:13:30 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='SF' session_open=False
+2026-10-10 00:13:30 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=3 · 源分布={'daily_close': 3} · 状态={'PASS': 3}
+2026-10-10 00:13:30 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：2 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=2（不占 60s 令牌）
+2026-10-10 00:13:32 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:13:32 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=2 · 权利金 报价=2 分布={'PASS': 2} · OI 报价=2 分布={'PASS': 2} · 命中缓存=2
+2026-10-10 00:13:32 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble SF：取数装配完成 · R净权利金=118.0 · 价差宽=400.0 · 最大亏损=1410.0 · 保证金=2989.01 · 乘数=5.0
+2026-10-10 00:13:32 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2168ms)
+2026-10-10 00:13:32 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='SF' session_open=False
+2026-10-10 00:13:32 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:13:32 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='SF' verdict='FAIL'
+2026-10-10 00:13:32 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:13:32 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · SF · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:13:32 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='SF', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='SF', structure='single', premium=PremiumSet(quotes={'SF612C6000.CZCE': PremiumQuote(symbol='SF612C6000.CZCE', code='SF', underlying_month='2612', cp='C', strike=6000.0, role='short', bid=None, ask=None, last=None, mid=None, spread…(+42145) (耗时 2170ms)
+2026-10-10 00:13:32 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('SH', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_pre…(+532))
+2026-10-10 00:13:32 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='SH' session_open=False
+2026-10-10 00:13:32 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=3 · 源分布={'daily_close': 3} · 状态={'PASS': 3}
+2026-10-10 00:13:32 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：2 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=2（不占 60s 令牌）
+2026-10-10 00:13:34 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:13:34 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=2 · 权利金 报价=2 分布={'PASS': 2} · OI 报价=2 分布={'PASS': 2} · 命中缓存=2
+2026-10-10 00:13:34 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble SH：取数装配完成 · R净权利金=24.5 · 价差宽=80.0 · 最大亏损=1665.0 · 保证金=5514.0 · 乘数=30.0
+2026-10-10 00:13:34 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2163ms)
+2026-10-10 00:13:34 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='SH' session_open=False
+2026-10-10 00:13:34 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:13:34 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='SH' verdict='FAIL'
+2026-10-10 00:13:34 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:13:34 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · SH · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:13:34 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='SH', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='SH', structure='single', premium=PremiumSet(quotes={'SH612C1840.CZCE': PremiumQuote(symbol='SH612C1840.CZCE', code='SH', underlying_month='2612', cp='C', strike=1840.0, role='short', bid=None, ask=None, last=None, mid=None, spread…(+43184) (耗时 2165ms)
+2026-10-10 00:13:34 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('SM', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_pre…(+532))
+2026-10-10 00:13:34 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='SM' session_open=False
+2026-10-10 00:13:34 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=3 · 源分布={'daily_close': 3} · 状态={'PASS': 3}
+2026-10-10 00:13:34 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：2 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=2（不占 60s 令牌）
+2026-10-10 00:13:36 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:13:36 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=2 · 权利金 报价=2 分布={'PASS': 2} · OI 报价=2 分布={'PASS': 2} · 命中缓存=2
+2026-10-10 00:13:36 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble SM：取数装配完成 · R净权利金=69.0 · 价差宽=400.0 · 最大亏损=1655.0 · 保证金=2875.808 · 乘数=5.0
+2026-10-10 00:13:36 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2083ms)
+2026-10-10 00:13:36 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='SM' session_open=False
+2026-10-10 00:13:36 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:13:36 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='SM' verdict='FAIL'
+2026-10-10 00:13:36 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:13:36 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · SM · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:13:36 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='SM', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='SM', structure='single', premium=PremiumSet(quotes={'SM612C5800.CZCE': PremiumQuote(symbol='SM612C5800.CZCE', code='SM', underlying_month='2612', cp='C', strike=5800.0, role='short', bid=None, ask=None, last=None, mid=None, spread…(+43273) (耗时 2086ms)
+2026-10-10 00:13:36 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('SR', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_pre…(+532))
+2026-10-10 00:13:36 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='SR' session_open=False
+2026-10-10 00:13:36 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=2 · 源分布={'daily_close': 2} · 状态={'PASS': 2}
+2026-10-10 00:13:36 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：4 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=4（不占 60s 令牌）
+2026-10-10 00:13:38 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:13:38 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=4 · 权利金 报价=4 分布={'PASS': 4} · OI 报价=4 分布={'PASS': 4} · 命中缓存=4
+2026-10-10 00:13:38 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble SR：取数装配完成 · R净权利金=122.0 · 价差宽=400.0 · 最大亏损=2780.0 · 保证金=5422.272 · 乘数=10.0
+2026-10-10 00:13:38 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2091ms)
+2026-10-10 00:13:38 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='SR' session_open=False
+2026-10-10 00:13:38 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:13:38 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='SR' verdict='MISSING'
+2026-10-10 00:13:38 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:13:38 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · SR · 汇总=MISSING · 标签=次日候选·待开盘全链路复核 · 早筛排除=None
+2026-10-10 00:13:38 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='SR', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='SR', structure='dual', premium=PremiumSet(quotes={'SR701P5400.CZCE': PremiumQuote(symbol='SR701P5400.CZCE', code='SR', underlying_month='2701', cp='P', strike=5400.0, role='short', bid=None, ask=None, last=None, mid=None, spread=N…(+44414) (耗时 2094ms)
+2026-10-10 00:13:38 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('TA', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_pre…(+532))
+2026-10-10 00:13:38 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='TA' session_open=False
+2026-10-10 00:13:38 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=3 · 源分布={'daily_close': 3} · 状态={'PASS': 3}
+2026-10-10 00:13:38 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：2 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=2（不占 60s 令牌）
+2026-10-10 00:13:40 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:13:40 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=2 · 权利金 报价=2 分布={'PASS': 2} · OI 报价=2 分布={'PASS': 2} · 命中缓存=2
+2026-10-10 00:13:40 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble TA：取数装配完成 · R净权利金=158.5 · 价差宽=400.0 · 最大亏损=1207.5 · 保证金=3436.665 · 乘数=5.0
+2026-10-10 00:13:40 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2153ms)
+2026-10-10 00:13:40 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='TA' session_open=False
+2026-10-10 00:13:40 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:13:40 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='TA' verdict='FAIL'
+2026-10-10 00:13:40 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:13:40 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · TA · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:13:40 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='TA', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='TA', structure='single', premium=PremiumSet(quotes={'TA612P6900.CZCE': PremiumQuote(symbol='TA612P6900.CZCE', code='TA', underlying_month='2612', cp='P', strike=6900.0, role='short', bid=None, ask=None, last=None, mid=None, spread…(+42430) (耗时 2155ms)
+2026-10-10 00:13:40 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('UR', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_pre…(+532))
+2026-10-10 00:13:40 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='UR' session_open=False
+2026-10-10 00:13:40 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=3 · 源分布={'daily_close': 3} · 状态={'PASS': 3}
+2026-10-10 00:13:40 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：2 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=2（不占 60s 令牌）
+2026-10-10 00:13:42 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:13:42 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=2 · 权利金 报价=2 分布={'PASS': 2} · OI 报价=2 分布={'PASS': 2} · 命中缓存=2
+2026-10-10 00:13:42 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble UR：取数装配完成 · R净权利金=17.5 · 价差宽=80.0 · 最大亏损=1250.0 · 保证金=3530.466 · 乘数=20.0
+2026-10-10 00:13:42 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2130ms)
+2026-10-10 00:13:42 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='UR' session_open=False
+2026-10-10 00:13:42 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:13:42 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='UR' verdict='FAIL'
+2026-10-10 00:13:42 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:13:42 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · UR · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:13:42 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='UR', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='UR', structure='single', premium=PremiumSet(quotes={'UR612C1780.CZCE': PremiumQuote(symbol='UR612C1780.CZCE', code='UR', underlying_month='2612', cp='C', strike=1780.0, role='short', bid=None, ask=None, last=None, mid=None, spread…(+42838) (耗时 2133ms)
+2026-10-10 00:13:42 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('a', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_prem…(+531))
+2026-10-10 00:13:42 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='a' session_open=False
+2026-10-10 00:13:42 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=2 · 源分布={'daily_close': 2} · 状态={'PASS': 2}
+2026-10-10 00:13:42 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：2 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=2（不占 60s 令牌）
+2026-10-10 00:13:44 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:13:44 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=2 · 权利金 报价=2 分布={'PASS': 2} · OI 报价=2 分布={'PASS': 2} · 命中缓存=2
+2026-10-10 00:13:44 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble a：取数装配完成 · R净权利金=89.5 · 价差宽=350.0 · 最大亏损=2605.0 · 保证金=1080.8464000000001 · 乘数=10.0
+2026-10-10 00:13:44 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2047ms)
+2026-10-10 00:13:44 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='a' session_open=False
+2026-10-10 00:13:44 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:13:44 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='a' verdict='FAIL'
+2026-10-10 00:13:44 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:13:44 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · a · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:13:44 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='a', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='a', structure='single', premium=PremiumSet(quotes={'a2701-P-5300.DCE': PremiumQuote(symbol='a2701-P-5300.DCE', code='a', underlying_month='2701', cp='P', strike=5300.0, role='short', bid=None, ask=None, last=None, mid=None, spread=…(+42588) (耗时 2050ms)
+2026-10-10 00:13:44 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('b', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_prem…(+531))
+2026-10-10 00:13:44 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='b' session_open=False
+2026-10-10 00:13:44 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=3 · 源分布={'daily_close': 3} · 状态={'PASS': 3}
+2026-10-10 00:13:44 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：2 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=2（不占 60s 令牌）
+2026-10-10 00:13:47 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:13:47 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=2 · 权利金 报价=2 分布={'PASS': 2} · OI 报价=2 分布={'PASS': 2} · 命中缓存=2
+2026-10-10 00:13:47 | WARNING | sell_option.strategy.assemble | assemble.assemble_candidate:594 | assemble b：护栏观测(不阻挡): call:保护腿82.0≥短腿80.0×0.9
+2026-10-10 00:13:47 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble b：取数装配完成 · R净权利金=-2.0 · 价差宽=200.0 · 最大亏损=2020.0 · 保证金=812.196 · 乘数=10.0 · 护栏观测(不阻挡): call:保护腿82.0≥短腿80.0×0.9
+2026-10-10 00:13:47 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2138ms)
+2026-10-10 00:13:47 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='b' session_open=False
+2026-10-10 00:13:47 | INFO  | sell_option.strategy.opening | opening.run_opening_checks:257 | run_opening_checks：护栏命中 → #8/#9 腿经济量检查降级为待人工，品种放行到人工（不据脏数据淘汰）
+2026-10-10 00:13:47 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:13:47 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='b' verdict='MISSING'
+2026-10-10 00:13:47 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:13:47 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · b · 汇总=MISSING · 标签=待人工 · 早筛排除=None
+2026-10-10 00:13:47 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='b', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='b', structure='single', premium=PremiumSet(quotes={'b2612-C-4150.DCE': PremiumQuote(symbol='b2612-C-4150.DCE', code='b', underlying_month='2612', cp='C', strike=4150.0, role='short', bid=None, ask=None, last=None, mid=None, spread=…(+42672) (耗时 2141ms)
+2026-10-10 00:13:47 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('c', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_prem…(+531))
+2026-10-10 00:13:47 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='c' session_open=False
+2026-10-10 00:13:47 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=2 · 源分布={'daily_close': 2} · 状态={'PASS': 2}
+2026-10-10 00:13:47 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：2 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=2（不占 60s 令牌）
+2026-10-10 00:13:49 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:13:49 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=2 · 权利金 报价=2 分布={'PASS': 2} · OI 报价=2 分布={'PASS': 2} · 命中缓存=2
+2026-10-10 00:13:49 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble c：取数装配完成 · R净权利金=22.5 · 价差宽=80.0 · 最大亏损=575.0 · 保证金=438.9150000000001 · 乘数=10.0
+2026-10-10 00:13:49 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2128ms)
+2026-10-10 00:13:49 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='c' session_open=False
+2026-10-10 00:13:49 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:13:49 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='c' verdict='FAIL'
+2026-10-10 00:13:49 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:13:49 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · c · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:13:49 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='c', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='c', structure='single', premium=PremiumSet(quotes={'c2701-C-2180.DCE': PremiumQuote(symbol='c2701-C-2180.DCE', code='c', underlying_month='2701', cp='C', strike=2180.0, role='short', bid=None, ask=None, last=None, mid=None, spread=…(+43190) (耗时 2131ms)
+2026-10-10 00:13:49 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('cs', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_pre…(+532))
+2026-10-10 00:13:49 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='cs' session_open=False
+2026-10-10 00:13:49 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=2 · 源分布={'daily_close': 2} · 状态={'PASS': 2}
+2026-10-10 00:13:49 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：2 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=2（不占 60s 令牌）
+2026-10-10 00:13:51 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:13:51 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=2 · 权利金 报价=2 分布={'PASS': 2} · OI 报价=2 分布={'PASS': 2} · 命中缓存=2
+2026-10-10 00:13:51 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble cs：取数装配完成 · R净权利金=31.5 · 价差宽=200.0 · 最大亏损=1685.0 · 保证金=482.632 · 乘数=10.0
+2026-10-10 00:13:51 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2087ms)
+2026-10-10 00:13:51 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='cs' session_open=False
+2026-10-10 00:13:51 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:13:51 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='cs' verdict='FAIL'
+2026-10-10 00:13:51 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:13:51 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · cs · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:13:51 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='cs', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='cs', structure='single', premium=PremiumSet(quotes={'cs2701-C-2450.DCE': PremiumQuote(symbol='cs2701-C-2450.DCE', code='cs', underlying_month='2701', cp='C', strike=2450.0, role='short', bid=None, ask=None, last=None, mid=None, sp…(+42796) (耗时 2090ms)
+2026-10-10 00:13:51 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('eb', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_pre…(+532))
+2026-10-10 00:13:51 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='eb' session_open=False
+2026-10-10 00:13:51 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=3 · 源分布={'daily_close': 3} · 状态={'PASS': 3}
+2026-10-10 00:13:51 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：2 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=2（不占 60s 令牌）
+2026-10-10 00:13:53 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:13:53 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=2 · 权利金 报价=2 分布={'PASS': 2} · OI 报价=2 分布={'PASS': 2} · 命中缓存=2
+2026-10-10 00:13:53 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble eb：取数装配完成 · R净权利金=172.0 · 价差宽=400.0 · 最大亏损=1140.0 · 保证金=1018.8825999999999 · 乘数=5.0
+2026-10-10 00:13:53 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2157ms)
+2026-10-10 00:13:53 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='eb' session_open=False
+2026-10-10 00:13:53 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:13:53 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='eb' verdict='FAIL'
+2026-10-10 00:13:53 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:13:53 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · eb · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:13:53 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='eb', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='eb', structure='single', premium=PremiumSet(quotes={'eb2612-P-10000.DCE': PremiumQuote(symbol='eb2612-P-10000.DCE', code='eb', underlying_month='2612', cp='P', strike=10000.0, role='short', bid=None, ask=None, last=None, mid=None,…(+43029) (耗时 2160ms)
+2026-10-10 00:13:53 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('eg', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_pre…(+532))
+2026-10-10 00:13:53 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='eg' session_open=False
+2026-10-10 00:13:53 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=3 · 源分布={'daily_close': 3} · 状态={'PASS': 3}
+2026-10-10 00:13:53 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：2 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=2（不占 60s 令牌）
+2026-10-10 00:13:55 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:13:55 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=2 · 权利金 报价=2 分布={'PASS': 2} · OI 报价=2 分布={'PASS': 2} · 命中缓存=2
+2026-10-10 00:13:55 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble eg：取数装配完成 · R净权利金=102.0 · 价差宽=400.0 · 最大亏损=2980.0 · 保证金=1006.3832000000001 · 乘数=10.0
+2026-10-10 00:13:55 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2121ms)
+2026-10-10 00:13:55 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='eg' session_open=False
+2026-10-10 00:13:55 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:13:55 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='eg' verdict='FAIL'
+2026-10-10 00:13:55 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:13:55 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · eg · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:13:55 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='eg', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='eg', structure='single', premium=PremiumSet(quotes={'eg2612-C-5100.DCE': PremiumQuote(symbol='eg2612-C-5100.DCE', code='eg', underlying_month='2612', cp='C', strike=5100.0, role='short', bid=None, ask=None, last=None, mid=None, sp…(+42955) (耗时 2123ms)
+2026-10-10 00:13:55 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('i', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_prem…(+531))
+2026-10-10 00:13:55 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='i' session_open=False
+2026-10-10 00:13:55 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=3 · 源分布={'daily_close': 3} · 状态={'PASS': 3}
+2026-10-10 00:13:55 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：2 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=2（不占 60s 令牌）
+2026-10-10 00:13:57 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:13:57 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=2 · 权利金 报价=2 分布={'PASS': 2} · OI 报价=2 分布={'PASS': 2} · 命中缓存=2
+2026-10-10 00:13:57 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble i：取数装配完成 · R净权利金=9.5 · 价差宽=40.0 · 最大亏损=3050.0 · 保证金=1654.7970000000003 · 乘数=100.0
+2026-10-10 00:13:57 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2047ms)
+2026-10-10 00:13:57 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='i' session_open=False
+2026-10-10 00:13:57 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:13:57 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='i' verdict='FAIL'
+2026-10-10 00:13:57 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:13:57 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · i · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:13:57 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='i', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='i', structure='single', premium=PremiumSet(quotes={'i2612-C-690.DCE': PremiumQuote(symbol='i2612-C-690.DCE', code='i', underlying_month='2612', cp='C', strike=690.0, role='short', bid=None, ask=None, last=None, mid=None, spread=Non…(+42337) (耗时 2049ms)
+2026-10-10 00:13:57 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('j', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_prem…(+531))
+2026-10-10 00:13:57 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='j' session_open=False
+2026-10-10 00:13:57 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=3 · 源分布={'daily_close': 3} · 状态={'PASS': 3}
+2026-10-10 00:13:57 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：2 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=2（不占 60s 令牌）
+2026-10-10 00:13:59 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:13:59 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=2 · 权利金 报价=2 分布={'MISSING': 1, 'PASS': 1} · OI 报价=2 分布={'MISSING': 1, 'PASS': 1} · 命中缓存=2
+2026-10-10 00:13:59 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble j：取数装配完成 · R净权利金=None · 价差宽=100.0 · 最大亏损=None · 保证金=None · 乘数=100.0
+2026-10-10 00:13:59 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2221ms)
+2026-10-10 00:13:59 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='j' session_open=False
+2026-10-10 00:13:59 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:13:59 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='j' verdict='FAIL'
+2026-10-10 00:13:59 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:13:59 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · j · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:13:59 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='j', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='j', structure='single', premium=PremiumSet(quotes={'j2612-C-1950.DCE': PremiumQuote(symbol='j2612-C-1950.DCE', code='j', underlying_month='2612', cp='C', strike=1950.0, role='short', bid=None, ask=None, last=None, mid=None, spread=…(+42492) (耗时 2224ms)
+2026-10-10 00:13:59 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('jd', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_pre…(+532))
+2026-10-10 00:13:59 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='jd' session_open=False
+2026-10-10 00:13:59 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=3 · 源分布={'daily_close': 3} · 状态={'PASS': 3}
+2026-10-10 00:13:59 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：4 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=4（不占 60s 令牌）
+2026-10-10 00:14:01 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:14:01 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=4 · 权利金 报价=4 分布={'PASS': 4} · OI 报价=4 分布={'PASS': 4} · 命中缓存=4
+2026-10-10 00:14:01 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble jd：取数装配完成 · R净权利金=120.5 · 价差宽=200.0 · 最大亏损=397.5 · 保证金=887.978 · 乘数=5.0
+2026-10-10 00:14:01 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2082ms)
+2026-10-10 00:14:01 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='jd' session_open=False
+2026-10-10 00:14:01 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:14:01 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='jd' verdict='FAIL'
+2026-10-10 00:14:01 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:14:01 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · jd · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:14:01 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='jd', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='jd', structure='dual', premium=PremiumSet(quotes={'jd2612-P-3700.DCE': PremiumQuote(symbol='jd2612-P-3700.DCE', code='jd', underlying_month='2612', cp='P', strike=3700.0, role='short', bid=None, ask=None, last=None, mid=None, spre…(+44315) (耗时 2085ms)
+2026-10-10 00:14:01 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('jm', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_pre…(+532))
+2026-10-10 00:14:01 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='jm' session_open=False
+2026-10-10 00:14:01 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=3 · 源分布={'daily_close': 3} · 状态={'PASS': 3}
+2026-10-10 00:14:01 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：2 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=2（不占 60s 令牌）
+2026-10-10 00:14:04 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:14:04 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=2 · 权利金 报价=2 分布={'PASS': 2} · OI 报价=2 分布={'PASS': 2} · 命中缓存=2
+2026-10-10 00:14:04 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble jm：取数装配完成 · R净权利金=37.0 · 价差宽=80.0 · 最大亏损=2580.0 · 保证金=1653.0 · 乘数=60.0
+2026-10-10 00:14:04 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2143ms)
+2026-10-10 00:14:04 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='jm' session_open=False
+2026-10-10 00:14:04 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:14:04 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='jm' verdict='FAIL'
+2026-10-10 00:14:04 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:14:04 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · jm · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:14:04 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='jm', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='jm', structure='single', premium=PremiumSet(quotes={'jm2612-C-1380.DCE': PremiumQuote(symbol='jm2612-C-1380.DCE', code='jm', underlying_month='2612', cp='C', strike=1380.0, role='short', bid=None, ask=None, last=None, mid=None, sp…(+43185) (耗时 2145ms)
+2026-10-10 00:14:04 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('l', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_prem…(+531))
+2026-10-10 00:14:04 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='l' session_open=False
+2026-10-10 00:14:04 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=3 · 源分布={'daily_close': 3} · 状态={'PASS': 3}
+2026-10-10 00:14:04 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：2 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=2（不占 60s 令牌）
+2026-10-10 00:14:06 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:14:06 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=2 · 权利金 报价=2 分布={'PASS': 2} · OI 报价=2 分布={'PASS': 2} · 命中缓存=2
+2026-10-10 00:14:06 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble l：取数装配完成 · R净权利金=147.5 · 价差宽=400.0 · 最大亏损=1262.5 · 保证金=906.6718 · 乘数=5.0
+2026-10-10 00:14:06 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2080ms)
+2026-10-10 00:14:06 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='l' session_open=False
+2026-10-10 00:14:06 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:14:06 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='l' verdict='FAIL'
+2026-10-10 00:14:06 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:14:06 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · l · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:14:06 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='l', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='l', structure='single', premium=PremiumSet(quotes={'l2612-C-9100.DCE': PremiumQuote(symbol='l2612-C-9100.DCE', code='l', underlying_month='2612', cp='C', strike=9100.0, role='short', bid=None, ask=None, last=None, mid=None, spread=…(+43184) (耗时 2082ms)
+2026-10-10 00:14:06 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('lg', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_pre…(+532))
+2026-10-10 00:14:06 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='lg' session_open=False
+2026-10-10 00:14:06 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=2 · 源分布={'daily_close': 2} · 状态={'PASS': 2}
+2026-10-10 00:14:06 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：4 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=4（不占 60s 令牌）
+2026-10-10 00:14:08 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:14:08 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=4 · 权利金 报价=4 分布={'PASS': 4} · OI 报价=4 分布={'PASS': 4} · 命中缓存=4
+2026-10-10 00:14:08 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble lg：取数装配完成 · R净权利金=14.5 · 价差宽=100.0 · 最大亏损=7695.0 · 保证金=1789.2972000000002 · 乘数=90.0
+2026-10-10 00:14:08 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2083ms)
+2026-10-10 00:14:08 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='lg' session_open=False
+2026-10-10 00:14:08 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:14:08 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='lg' verdict='FAIL'
+2026-10-10 00:14:08 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:14:08 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · lg · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:14:08 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='lg', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='lg', structure='dual', premium=PremiumSet(quotes={'lg2701-P-825.DCE': PremiumQuote(symbol='lg2701-P-825.DCE', code='lg', underlying_month='2701', cp='P', strike=825.0, role='short', bid=None, ask=None, last=None, mid=None, spread=…(+43184) (耗时 2086ms)
+2026-10-10 00:14:08 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('lh', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_pre…(+532))
+2026-10-10 00:14:08 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='lh' session_open=False
+2026-10-10 00:14:08 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=2 · 源分布={'daily_close': 2} · 状态={'PASS': 2}
+2026-10-10 00:14:08 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：2 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=2（不占 60s 令牌）
+2026-10-10 00:14:10 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:14:10 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=2 · 权利金 报价=2 分布={'PASS': 2} · OI 报价=2 分布={'PASS': 2} · 命中缓存=2
+2026-10-10 00:14:10 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble lh：取数装配完成 · R净权利金=197.5 · 价差宽=800.0 · 最大亏损=9640.0 · 保证金=5337.5072 · 乘数=16.0
+2026-10-10 00:14:10 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2043ms)
+2026-10-10 00:14:10 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='lh' session_open=False
+2026-10-10 00:14:10 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:14:10 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='lh' verdict='FAIL'
+2026-10-10 00:14:10 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:14:10 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · lh · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:14:10 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='lh', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='lh', structure='single', premium=PremiumSet(quotes={'lh2701-C-11200.DCE': PremiumQuote(symbol='lh2701-C-11200.DCE', code='lh', underlying_month='2701', cp='C', strike=11200.0, role='short', bid=None, ask=None, last=None, mid=None,…(+42301) (耗时 2046ms)
+2026-10-10 00:14:10 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('m', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_prem…(+531))
+2026-10-10 00:14:10 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='m' session_open=False
+2026-10-10 00:14:10 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=3 · 源分布={'daily_close': 3} · 状态={'PASS': 3}
+2026-10-10 00:14:10 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：2 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=2（不占 60s 令牌）
+2026-10-10 00:14:12 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:14:12 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=2 · 权利金 报价=2 分布={'PASS': 2} · OI 报价=2 分布={'PASS': 2} · 命中缓存=2
+2026-10-10 00:14:12 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble m：取数装配完成 · R净权利金=43.5 · 价差宽=200.0 · 最大亏损=1565.0 · 保证金=675.5672 · 乘数=10.0
+2026-10-10 00:14:12 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2071ms)
+2026-10-10 00:14:12 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='m' session_open=False
+2026-10-10 00:14:12 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:14:12 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='m' verdict='MISSING'
+2026-10-10 00:14:12 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:14:12 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · m · 汇总=MISSING · 标签=次日候选·待开盘全链路复核 · 早筛排除=None
+2026-10-10 00:14:12 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='m', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='m', structure='single', premium=PremiumSet(quotes={'m2612-C-3400.DCE': PremiumQuote(symbol='m2612-C-3400.DCE', code='m', underlying_month='2612', cp='C', strike=3400.0, role='short', bid=None, ask=None, last=None, mid=None, spread=…(+43424) (耗时 2073ms)
+2026-10-10 00:14:12 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('p', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_prem…(+531))
+2026-10-10 00:14:12 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='p' session_open=False
+2026-10-10 00:14:12 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=3 · 源分布={'daily_close': 3} · 状态={'PASS': 3}
+2026-10-10 00:14:12 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：2 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=2（不占 60s 令牌）
+2026-10-10 00:14:14 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:14:14 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=2 · 权利金 报价=2 分布={'PASS': 2} · OI 报价=2 分布={'PASS': 2} · 命中缓存=2
+2026-10-10 00:14:14 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble p：取数装配完成 · R净权利金=103.0 · 价差宽=400.0 · 最大亏损=2970.0 · 保证金=1893.105 · 乘数=10.0
+2026-10-10 00:14:14 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2051ms)
+2026-10-10 00:14:14 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='p' session_open=False
+2026-10-10 00:14:14 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:14:14 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='p' verdict='FAIL'
+2026-10-10 00:14:14 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:14:14 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · p · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:14:14 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='p', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='p', structure='single', premium=PremiumSet(quotes={'p2612-C-9500.DCE': PremiumQuote(symbol='p2612-C-9500.DCE', code='p', underlying_month='2612', cp='C', strike=9500.0, role='short', bid=None, ask=None, last=None, mid=None, spread=…(+43338) (耗时 2053ms)
+2026-10-10 00:14:14 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('pg', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_pre…(+532))
+2026-10-10 00:14:14 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='pg' session_open=False
+2026-10-10 00:14:14 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=3 · 源分布={'daily_close': 3} · 状态={'PASS': 3}
+2026-10-10 00:14:14 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：2 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=2（不占 60s 令牌）
+2026-10-10 00:14:16 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:14:16 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=2 · 权利金 报价=2 分布={'PASS': 2} · OI 报价=2 分布={'PASS': 2} · 命中缓存=2
+2026-10-10 00:14:16 | WARNING | sell_option.strategy.assemble | assemble.assemble_candidate:594 | assemble pg：护栏观测(不阻挡): put:保护腿751.0≥短腿405.0×0.9
+2026-10-10 00:14:16 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble pg：取数装配完成 · R净权利金=-346.0 · 价差宽=400.0 · 最大亏损=14920.0 · 保证金=4664.320000000001 · 乘数=20.0 · 护栏观测(不阻挡): put:保护腿751.0≥短腿405.0×0.9
+2026-10-10 00:14:16 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2155ms)
+2026-10-10 00:14:16 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='pg' session_open=False
+2026-10-10 00:14:16 | INFO  | sell_option.strategy.opening | opening.run_opening_checks:257 | run_opening_checks：护栏命中 → #8/#9 腿经济量检查降级为待人工，品种放行到人工（不据脏数据淘汰）
+2026-10-10 00:14:16 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:14:16 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='pg' verdict='FAIL'
+2026-10-10 00:14:16 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:14:16 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · pg · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:14:16 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='pg', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='pg', structure='single', premium=PremiumSet(quotes={'pg2612-P-7200.DCE': PremiumQuote(symbol='pg2612-P-7200.DCE', code='pg', underlying_month='2612', cp='P', strike=7200.0, role='short', bid=None, ask=None, last=None, mid=None, sp…(+42589) (耗时 2157ms)
+2026-10-10 00:14:16 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('pp', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_pre…(+532))
+2026-10-10 00:14:16 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='pp' session_open=False
+2026-10-10 00:14:16 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=3 · 源分布={'daily_close': 3} · 状态={'PASS': 3}
+2026-10-10 00:14:16 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：2 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=2（不占 60s 令牌）
+2026-10-10 00:14:18 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:14:18 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=2 · 权利金 报价=2 分布={'PASS': 2} · OI 报价=2 分布={'PASS': 2} · 命中缓存=2
+2026-10-10 00:14:18 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble pp：取数装配完成 · R净权利金=174.5 · 价差宽=400.0 · 最大亏损=1127.5 · 保证金=963.9287999999999 · 乘数=5.0
+2026-10-10 00:14:18 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2102ms)
+2026-10-10 00:14:18 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='pp' session_open=False
+2026-10-10 00:14:18 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:14:18 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='pp' verdict='FAIL'
+2026-10-10 00:14:18 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:14:18 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · pp · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:14:18 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='pp', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='pp', structure='single', premium=PremiumSet(quotes={'pp2612-P-9600.DCE': PremiumQuote(symbol='pp2612-P-9600.DCE', code='pp', underlying_month='2612', cp='P', strike=9600.0, role='short', bid=None, ask=None, last=None, mid=None, sp…(+43208) (耗时 2104ms)
+2026-10-10 00:14:18 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('v', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_prem…(+531))
+2026-10-10 00:14:18 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='v' session_open=False
+2026-10-10 00:14:18 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=3 · 源分布={'daily_close': 3} · 状态={'PASS': 3}
+2026-10-10 00:14:18 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：2 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=2（不占 60s 令牌）
+2026-10-10 00:14:20 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:14:20 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=2 · 权利金 报价=2 分布={'PASS': 2} · OI 报价=2 分布={'PASS': 2} · 命中缓存=2
+2026-10-10 00:14:20 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble v：取数装配完成 · R净权利金=75.0 · 价差宽=350.0 · 最大亏损=1375.0 · 保证金=498.63509999999997 · 乘数=5.0
+2026-10-10 00:14:20 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2026ms)
+2026-10-10 00:14:20 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='v' session_open=False
+2026-10-10 00:14:20 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:14:20 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='v' verdict='MISSING'
+2026-10-10 00:14:20 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:14:20 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · v · 汇总=MISSING · 标签=次日候选·待开盘全链路复核 · 早筛排除=None
+2026-10-10 00:14:20 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='v', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='v', structure='single', premium=PremiumSet(quotes={'v2612-C-4950.DCE': PremiumQuote(symbol='v2612-C-4950.DCE', code='v', underlying_month='2612', cp='C', strike=4950.0, role='short', bid=None, ask=None, last=None, mid=None, spread=…(+43097) (耗时 2028ms)
+2026-10-10 00:14:20 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('y', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_prem…(+531))
+2026-10-10 00:14:20 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='y' session_open=False
+2026-10-10 00:14:20 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=3 · 源分布={'daily_close': 3} · 状态={'PASS': 3}
+2026-10-10 00:14:20 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：2 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=2（不占 60s 令牌）
+2026-10-10 00:14:22 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:14:22 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=2 · 权利金 报价=2 分布={'PASS': 2} · OI 报价=2 分布={'PASS': 2} · 命中缓存=2
+2026-10-10 00:14:22 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble y：取数装配完成 · R净权利金=68.5 · 价差宽=400.0 · 最大亏损=3315.0 · 保证金=1789.7879999999998 · 乘数=10.0
+2026-10-10 00:14:22 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2096ms)
+2026-10-10 00:14:22 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='y' session_open=False
+2026-10-10 00:14:22 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:14:22 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='y' verdict='FAIL'
+2026-10-10 00:14:22 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:14:22 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · y · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:14:22 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='y', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='y', structure='single', premium=PremiumSet(quotes={'y2612-C-9000.DCE': PremiumQuote(symbol='y2612-C-9000.DCE', code='y', underlying_month='2612', cp='C', strike=9000.0, role='short', bid=None, ask=None, last=None, mid=None, spread=…(+42151) (耗时 2098ms)
+2026-10-10 00:14:22 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('lc', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_pre…(+532))
+2026-10-10 00:14:22 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='lc' session_open=False
+2026-10-10 00:14:22 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=3 · 源分布={'daily_close': 3} · 状态={'PASS': 3}
+2026-10-10 00:14:22 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：2 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=2（不占 60s 令牌）
+2026-10-10 00:14:24 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:14:24 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=2 · 权利金 报价=2 分布={'PASS': 2} · OI 报价=2 分布={'PASS': 2} · 命中缓存=2
+2026-10-10 00:14:24 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble lc：取数装配完成 · R净权利金=1820.0 · 价差宽=8000.0 · 最大亏损=6180.0 · 保证金=3550.1272 · 乘数=1.0
+2026-10-10 00:14:24 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2006ms)
+2026-10-10 00:14:24 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='lc' session_open=False
+2026-10-10 00:14:24 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:14:24 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='lc' verdict='FAIL'
+2026-10-10 00:14:24 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:14:24 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · lc · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:14:24 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='lc', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='lc', structure='single', premium=PremiumSet(quotes={'lc2612-C-120000.GFEX': PremiumQuote(symbol='lc2612-C-120000.GFEX', code='lc', underlying_month='2612', cp='C', strike=120000.0, role='short', bid=None, ask=None, last=None, mid=…(+43036) (耗时 2009ms)
+2026-10-10 00:14:24 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('ps', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_pre…(+532))
+2026-10-10 00:14:24 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='ps' session_open=False
+2026-10-10 00:14:24 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=3 · 源分布={'daily_close': 3} · 状态={'PASS': 3}
+2026-10-10 00:14:24 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：4 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=4（不占 60s 令牌）
+2026-10-10 00:14:26 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:14:26 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=4 · 权利金 报价=4 分布={'PASS': 4} · OI 报价=4 分布={'PASS': 4} · 命中缓存=4
+2026-10-10 00:14:26 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble ps：取数装配完成 · R净权利金=1559.0 · 价差宽=4000.0 · 最大亏损=7323.0 · 保证金=3587.7072000000003 · 乘数=3.0
+2026-10-10 00:14:26 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2040ms)
+2026-10-10 00:14:26 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='ps' session_open=False
+2026-10-10 00:14:26 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:14:26 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='ps' verdict='FAIL'
+2026-10-10 00:14:26 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:14:26 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · ps · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:14:26 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='ps', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='ps', structure='dual', premium=PremiumSet(quotes={'ps2612-P-39500.GFEX': PremiumQuote(symbol='ps2612-P-39500.GFEX', code='ps', underlying_month='2612', cp='P', strike=39500.0, role='short', bid=None, ask=None, last=None, mid=None,…(+44187) (耗时 2043ms)
+2026-10-10 00:14:26 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('si', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_pre…(+532))
+2026-10-10 00:14:26 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='si' session_open=False
+2026-10-10 00:14:26 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=3 · 源分布={'daily_close': 3} · 状态={'PASS': 3}
+2026-10-10 00:14:26 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：2 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=2（不占 60s 令牌）
+2026-10-10 00:14:28 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:14:28 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=2 · 权利金 报价=2 分布={'PASS': 2} · OI 报价=2 分布={'PASS': 2} · 命中缓存=2
+2026-10-10 00:14:28 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble si：取数装配完成 · R净权利金=84.0 · 价差宽=400.0 · 最大亏损=1580.0 · 保证金=1055.47 · 乘数=5.0
+2026-10-10 00:14:28 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2030ms)
+2026-10-10 00:14:28 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='si' session_open=False
+2026-10-10 00:14:28 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:14:28 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='si' verdict='FAIL'
+2026-10-10 00:14:28 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:14:28 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · si · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:14:28 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='si', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='si', structure='single', premium=PremiumSet(quotes={'si2612-C-8900.GFEX': PremiumQuote(symbol='si2612-C-8900.GFEX', code='si', underlying_month='2612', cp='C', strike=8900.0, role='short', bid=None, ask=None, last=None, mid=None, …(+42333) (耗时 2033ms)
+2026-10-10 00:14:28 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('ao', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_pre…(+532))
+2026-10-10 00:14:28 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='ao' session_open=False
+2026-10-10 00:14:28 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=3 · 源分布={'daily_close': 3} · 状态={'PASS': 3}
+2026-10-10 00:14:28 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：2 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=2（不占 60s 令牌）
+2026-10-10 00:14:30 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:14:30 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=2 · 权利金 报价=2 分布={'PASS': 2} · OI 报价=2 分布={'PASS': 2} · 命中缓存=2
+2026-10-10 00:14:30 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble ao：取数装配完成 · R净权利金=34.5 · 价差宽=200.0 · 最大亏损=3310.0 · 保证金=5321.876 · 乘数=20.0
+2026-10-10 00:14:30 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2084ms)
+2026-10-10 00:14:30 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='ao' session_open=False
+2026-10-10 00:14:30 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:14:30 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='ao' verdict='FAIL'
+2026-10-10 00:14:30 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:14:30 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · ao · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:14:30 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='ao', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='ao', structure='single', premium=PremiumSet(quotes={'ao2612C2700.SHFE': PremiumQuote(symbol='ao2612C2700.SHFE', code='ao', underlying_month='2612', cp='C', strike=2700.0, role='short', bid=None, ask=None, last=None, mid=None, spre…(+42941) (耗时 2087ms)
+2026-10-10 00:14:30 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('br', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_pre…(+532))
+2026-10-10 00:14:30 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='br' session_open=False
+2026-10-10 00:14:31 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=2 · 源分布={'daily_close': 2} · 状态={'PASS': 2}
+2026-10-10 00:14:31 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：2 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=2（不占 60s 令牌）
+2026-10-10 00:14:33 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:14:33 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=2 · 权利金 报价=2 分布={'PASS': 2} · OI 报价=2 分布={'PASS': 2} · 命中缓存=2
+2026-10-10 00:14:33 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble br：取数装配完成 · R净权利金=334.0 · 价差宽=800.0 · 最大亏损=2330.0 · 保证金=9735.880000000001 · 乘数=5.0
+2026-10-10 00:14:33 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2075ms)
+2026-10-10 00:14:33 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='br' session_open=False
+2026-10-10 00:14:33 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:14:33 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='br' verdict='FAIL'
+2026-10-10 00:14:33 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:14:33 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · br · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:14:33 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='br', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='br', structure='single', premium=PremiumSet(quotes={'br2612P16200.SHFE': PremiumQuote(symbol='br2612P16200.SHFE', code='br', underlying_month='2612', cp='P', strike=16200.0, role='short', bid=None, ask=None, last=None, mid=None, s…(+43285) (耗时 2077ms)
+2026-10-10 00:14:33 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('bu', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_pre…(+532))
+2026-10-10 00:14:33 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='bu' session_open=False
+2026-10-10 00:14:33 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=2 · 源分布={'daily_close': 2} · 状态={'PASS': 2}
+2026-10-10 00:14:33 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：2 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=2（不占 60s 令牌）
+2026-10-10 00:14:35 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:14:35 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=2 · 权利金 报价=2 分布={'PASS': 2} · OI 报价=2 分布={'PASS': 2} · 命中缓存=2
+2026-10-10 00:14:35 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble bu：取数装配完成 · R净权利金=313.0 · 价差宽=200.0 · 最大亏损=0.0 · 保证金=4907.952 · 乘数=10.0
+2026-10-10 00:14:35 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2061ms)
+2026-10-10 00:14:35 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='bu' session_open=False
+2026-10-10 00:14:35 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:14:35 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='bu' verdict='FAIL'
+2026-10-10 00:14:35 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:14:35 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · bu · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:14:35 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='bu', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='bu', structure='single', premium=PremiumSet(quotes={'bu2612P4850.SHFE': PremiumQuote(symbol='bu2612P4850.SHFE', code='bu', underlying_month='2612', cp='P', strike=4850.0, role='short', bid=None, ask=None, last=None, mid=None, spre…(+43061) (耗时 2063ms)
+2026-10-10 00:14:35 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('fu', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_pre…(+532))
+2026-10-10 00:14:35 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='fu' session_open=False
+2026-10-10 00:14:35 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=3 · 源分布={'daily_close': 3} · 状态={'PASS': 3}
+2026-10-10 00:14:35 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：2 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=2（不占 60s 令牌）
+2026-10-10 00:14:37 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:14:37 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=2 · 权利金 报价=2 分布={'PASS': 2} · OI 报价=2 分布={'PASS': 2} · 命中缓存=2
+2026-10-10 00:14:37 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble fu：取数装配完成 · R净权利金=96.0 · 价差宽=200.0 · 最大亏损=1040.0 · 保证金=4775.904 · 乘数=10.0
+2026-10-10 00:14:37 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2092ms)
+2026-10-10 00:14:37 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='fu' session_open=False
+2026-10-10 00:14:37 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 2ms)
+2026-10-10 00:14:37 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='fu' verdict='FAIL'
+2026-10-10 00:14:37 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:14:37 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · fu · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:14:37 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='fu', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='fu', structure='single', premium=PremiumSet(quotes={'fu2612P4700.SHFE': PremiumQuote(symbol='fu2612P4700.SHFE', code='fu', underlying_month='2612', cp='P', strike=4700.0, role='short', bid=None, ask=None, last=None, mid=None, spre…(+42724) (耗时 2094ms)
+2026-10-10 00:14:37 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('hc', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_pre…(+532))
+2026-10-10 00:14:37 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='hc' session_open=False
+2026-10-10 00:14:37 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=3 · 源分布={'daily_close': 3} · 状态={'PASS': 3}
+2026-10-10 00:14:37 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：2 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=2（不占 60s 令牌）
+2026-10-10 00:14:39 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:14:39 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=2 · 权利金 报价=2 分布={'PASS': 2} · OI 报价=2 分布={'PASS': 2} · 命中缓存=2
+2026-10-10 00:14:39 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble hc：取数装配完成 · R净权利金=30.5 · 价差宽=200.0 · 最大亏损=1695.0 · 保证金=3234.2309999999998 · 乘数=10.0
+2026-10-10 00:14:39 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2050ms)
+2026-10-10 00:14:39 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='hc' session_open=False
+2026-10-10 00:14:39 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 2ms)
+2026-10-10 00:14:39 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='hc' verdict='FAIL'
+2026-10-10 00:14:39 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:14:39 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · hc · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:14:39 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='hc', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='hc', structure='single', premium=PremiumSet(quotes={'hc2612C3250.SHFE': PremiumQuote(symbol='hc2612C3250.SHFE', code='hc', underlying_month='2612', cp='C', strike=3250.0, role='short', bid=None, ask=None, last=None, mid=None, spre…(+42348) (耗时 2053ms)
+2026-10-10 00:14:39 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('pb', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_pre…(+532))
+2026-10-10 00:14:39 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='pb' session_open=False
+2026-10-10 00:14:39 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=1 · 源分布={'daily_close': 1} · 状态={'PASS': 1}
+2026-10-10 00:14:39 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：4 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=4（不占 60s 令牌）
+2026-10-10 00:14:41 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:14:41 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=4 · 权利金 报价=4 分布={'PASS': 4} · OI 报价=4 分布={'PASS': 4} · 命中缓存=4
+2026-10-10 00:14:41 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble pb：取数装配完成 · R净权利金=343.0 · 价差宽=800.0 · 最大亏损=2285.0 · 保证金=7128.9075 · 乘数=5.0
+2026-10-10 00:14:41 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2082ms)
+2026-10-10 00:14:41 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='pb' session_open=False
+2026-10-10 00:14:41 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:14:41 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='pb' verdict='FAIL'
+2026-10-10 00:14:41 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:14:41 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · pb · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:14:41 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='pb', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='pb', structure='dual', premium=PremiumSet(quotes={'pb2612P15800.SHFE': PremiumQuote(symbol='pb2612P15800.SHFE', code='pb', underlying_month='2612', cp='P', strike=15800.0, role='short', bid=None, ask=None, last=None, mid=None, spr…(+44414) (耗时 2084ms)
+2026-10-10 00:14:41 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('rb', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_pre…(+532))
+2026-10-10 00:14:41 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='rb' session_open=False
+2026-10-10 00:14:41 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=3 · 源分布={'daily_close': 3} · 状态={'PASS': 3}
+2026-10-10 00:14:41 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：4 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=4（不占 60s 令牌）
+2026-10-10 00:14:43 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:15:45 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=4 · 权利金 报价=4 分布={'MISSING': 2, 'PASS': 2} · OI 报价=4 分布={'MISSING': 2, 'PASS': 2} · 命中缓存=4
+2026-10-10 00:15:45 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble rb：取数装配完成 · R净权利金=None · 价差宽=200.0 · 最大亏损=None · 保证金=None · 乘数=10.0
+2026-10-10 00:15:45 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 64308ms)
+2026-10-10 00:15:45 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='rb' session_open=False
+2026-10-10 00:15:45 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:15:45 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='rb' verdict='FAIL'
+2026-10-10 00:15:45 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:15:45 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · rb · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:15:45 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='rb', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='rb', structure='dual', premium=PremiumSet(quotes={'rb2612P3050.SHFE': PremiumQuote(symbol='rb2612P3050.SHFE', code='rb', underlying_month='2612', cp='P', strike=3050.0, role='short', bid=None, ask=None, last=None, mid=None, spread…(+44397) (耗时 64310ms)
+2026-10-10 00:15:45 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | >>> 进入 run_candidate · 请求参数=((('sp', ThresholdSet(oi_min=100, spread_ratio_max=0.1, adx_ranging=25.0, slope_ranging=0.0015, iv_pct_single=60.0, iv_pct_double=70.0, safety_sigma=1.0, event_warn_days=5, margin_pool_ratio=1.0, margin_per_trade=10000.0, rw_min=0.2, veto_gap_pct=0.02, veto_range_edge_pct=0.02, veto_atr_ratio=1.5, dte_min=20, dte_max=180, candidate_months=3, otm_pct=0.1, prot_strikes=4, short_candidates=3, prot_pre…(+532))
+2026-10-10 00:15:45 | INFO  | app.flow | runner.run_candidate:85 | >>> 开始 ② 取数装配 · 入参=code='sp' session_open=False
+2026-10-10 00:15:45 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=3 · 源分布={'daily_close': 3} · 状态={'PASS': 3}
+2026-10-10 00:15:45 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:95 | [combo] 盘后合并取数：4 合约 → get_history_n(position+close+time) · 已命中 premium.db 缓存=4（不占 60s 令牌）
+2026-10-10 00:15:47 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:15:47 | INFO  | sell_option.fetchers._combo_oi_premium | _combo_oi_premium.fetch_premium_and_oi:150 | D09/D10+D14 合并取数完成 · 合约=4 · 权利金 报价=4 分布={'PASS': 4} · OI 报价=4 分布={'PASS': 4} · 命中缓存=4
+2026-10-10 00:15:47 | INFO  | sell_option.strategy.assemble | assemble.assemble_candidate:596 | assemble sp：取数装配完成 · R净权利金=125.0 · 价差宽=200.0 · 最大亏损=750.0 · 保证金=4797.87 · 乘数=10.0
+2026-10-10 00:15:47 | INFO  | app.flow | runner.run_candidate:85 | <<< 结束 ② 取数装配 (耗时 2194ms)
+2026-10-10 00:15:47 | INFO  | app.flow | runner.run_candidate:95 | >>> 开始 ③ 跑检查#1-#10 · 入参=code='sp' session_open=False
+2026-10-10 00:15:47 | INFO  | app.flow | runner.run_candidate:95 | <<< 结束 ③ 跑检查#1-#10 (耗时 1ms)
+2026-10-10 00:15:47 | INFO  | app.flow | runner.run_candidate:97 | >>> 开始 ④ 策略汇总 · 入参=code='sp' verdict='FAIL'
+2026-10-10 00:15:47 | INFO  | app.flow | runner.run_candidate:97 | <<< 结束 ④ 策略汇总 (耗时 1ms)
+2026-10-10 00:15:47 | INFO  | sell_option.strategy.runner | runner.run_candidate:99 | run_candidate 完成 · sp · 汇总=FAIL · 标签=淘汰 · 早筛排除=None
+2026-10-10 00:15:47 | INFO  | sell_option.strategy.runner | runner.run_candidate:70 | <<< 返回 run_candidate · 输出参数=CandidateRun(code='sp', session=MarketSession(open=False, reason='命令 --session closed 强制休市（粗筛）', probe_symbol='--session:closed', judged_at=None), data=OpeningData(code='sp', structure='dual', premium=PremiumSet(quotes={'sp2612P4750.SHFE': PremiumQuote(symbol='sp2612P4750.SHFE', code='sp', underlying_month='2612', cp='P', strike=4750.0, role='short', bid=None, ask=None, last=None, mid=None, spread…(+43950) (耗时 2196ms)
+2026-10-10 00:15:47 | INFO  | sell_option.strategy.runner | runner.run_pool:104 | <<< 返回 run_pool · 输出参数=list[47](CandidateRun(code='AP', session=MarketSession(open=False, reason='命令 --session c…(+43232), CandidateRun(code='CF', session=MarketSession(open=False, reason='命令 --session c…(+42711), CandidateRun(code='CJ', session=MarketSession(open=False, reason='命令 --session c…(+43101), CandidateRun(code='FG', session=MarketSession(open=False, reason='命令 --session c…(+43597), CandidateRun(code='MA', session=MarketSession(open=False, reason='命令 --session c…(+43527), CandidateRun(code='OI', session=MarketSession(open=False, reason='命令 --session c…(+45192), …) (耗时 162302ms)
+2026-10-10 00:15:47 | INFO  | app.flow | cli.cmd_scan:375 | <<< 结束 run_pool 全池取数+检查 (耗时 162307ms)
+2026-10-10 00:15:47 | INFO  | app.flow | cli.cmd_scan:367 | <<< 结束 scan 全池扫描 (耗时 162401ms)
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   品种    结构            时段    汇总      标签
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   AP    single        休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   CF    single        休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   CJ    single        休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   FG    single        休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   MA    single        休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   OI    dual          休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   PF    single        休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   PK    dual          休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   PX    single        休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   RM    dual          休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   SA    single        休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   SF    single        休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   SH    single        休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   SM    single        休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   SR    dual          休市    MISSING 次日候选·待开盘全链路复核
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   TA    single        休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   UR    single        休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   a     single        休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   b     single        休市    MISSING 待人工
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   c     single        休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   cs    single        休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   eb    single        休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   eg    single        休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   i     single        休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   j     single        休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   jd    dual          休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   jm    single        休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   l     single        休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   lg    dual          休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   lh    single        休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   m     single        休市    MISSING 次日候选·待开盘全链路复核
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   p     single        休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   pg    single        休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   pp    single        休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   v     single        休市    MISSING 次日候选·待开盘全链路复核
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   y     single        休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   lc    single        休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   ps    dual          休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   si    single        休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   ao    single        休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   br    single        休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   bu    single        休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   fu    single        休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   hc    single        休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   pb    dual          休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   rb    dual          休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:377 |   sp    dual          休市    FAIL    淘汰
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:390 | [scan] 早筛未淘除任何品种（全部进入期权取数）
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:394 | ========================================================================
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:394 | 【漏斗淘汰统计】全池 47 品种 —— 定位机会是被谁卡掉的
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:394 | ========================================================================
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:394 |   无腿可评（选腿/保护档）    1   b
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:394 |   保护腿护栏观测告警(不阻挡)    2   b, pg
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:394 | ------------------------------------------------------------------------
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:394 |   检查		卡掉	首要	WARN	跳过	被卡掉的品种（前 10）
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:394 |   #1 盘口价差	0	0	0	47
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:394 |   #4 IV分位	24	24	7	0	AP, FG, OI, PK, RM, SA, SF, SH, SM, UR
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:394 |   #5 安全垫	27	17	0	0	AP, CF, CJ, FG, MA, OI, PF, PX, RM, SH
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:394 |   #6 事件窗口	0	0	47	0
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:394 |   #7 保证金	3	0	0	0	OI, j, rb
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:394 |   #8 封顶预算	11	1	0	0	CF, OI, i, j, lg, lh, y, lc, ps, ao
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:394 |   #9 肥瘦	8	1	0	0	SM, cs, j, lg, y, ao, hc, rb
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:394 |   #10 否决信号	10	0	0	0	CJ, MA, c, cs, eb, pg, pp, lc, bu, hc
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:394 | ------------------------------------------------------------------------
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:394 |   首要杀手（第一个阻断项）排名：
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:394 |     #4 IV分位	 24  → AP, FG, OI, PK, RM, SA, SF, SH, SM, UR, i, j
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:394 |     #5 安全垫	 17  → CF, CJ, MA, PF, PX, TA, a, c, eb, eg, l, lh
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:394 |     #8 封顶预算	  1  → y
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:394 |     #9 肥瘦	  1  → cs
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:394 | ------------------------------------------------------------------------
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:394 |   结果分布：淘汰:43 · 次日候选·待开盘全链路复核:3 · 待人工:1
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:394 |   可开 0
+2026-10-10 00:15:47 | INFO  | app.stdout | cli.cmd_scan:394 | ========================================================================
+2026-10-10 00:15:50 | INFO  | runtime | runtime.connect:46 | tbpy.init 成功 · product_key=tbquant3
+2026-10-10 00:16:47 | INFO  | sell_option.fetchers.d08_spot_price | d08_spot_price.fetch_d08:444 | D08 现价取数完成 · 品种=1 · 报价=1 · 源分布={'daily_close': 1} · 状态={'PASS': 1}
+2026-10-10 00:16:47 | ERROR | sell_option.strategy.cli | cli.cmd_scan:359 | !!! 异常 cmd_scan 抛出 ValueError: Unknown format code 'd' for object of type 'str' (耗时 222197ms)
+2026-10-10 00:16:47 | ERROR | app.stderr | <unknown>.<unknown>:0 | Traceback (most recent call last):
+2026-10-10 00:16:47 | ERROR | app.stderr | <unknown>.<unknown>:0 |   File "d:\PythonProject\MyTbquant\sellopt.py", line 22, in <module>
+2026-10-10 00:16:47 | ERROR | app.stderr | <unknown>.<unknown>:0 |     sys.exit(main())
+2026-10-10 00:16:47 | ERROR | app.stderr | <unknown>.<unknown>:0 |              ^^^^^^
+2026-10-10 00:16:47 | ERROR | app.stderr | <unknown>.<unknown>:0 |   File "D:\PythonProject\MyTbquant\sell_option\strategy\cli.py", line 535, in main
+2026-10-10 00:16:47 | ERROR | app.stderr | <unknown>.<unknown>:0 |     return args.func(rt, args, today=today)
+2026-10-10 00:16:47 | ERROR | app.stderr | <unknown>.<unknown>:0 |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-10-10 00:16:47 | ERROR | app.stderr | <unknown>.<unknown>:0 |   File "D:\PythonProject\MyTbquant\sell_option\logutil.py", line 262, in wrapper
+2026-10-10 00:16:47 | ERROR | app.stderr | <unknown>.<unknown>:0 |     res = fn(*args, **kwargs)
+2026-10-10 00:16:47 | ERROR | app.stderr | <unknown>.<unknown>:0 |           ^^^^^^^^^^^^^^^^^^^
+2026-10-10 00:16:47 | ERROR | app.stderr | <unknown>.<unknown>:0 |   File "D:\PythonProject\MyTbquant\sell_option\strategy\cli.py", line 396, in cmd_scan
+2026-10-10 00:16:47 | ERROR | app.stderr | <unknown>.<unknown>:0 |     path = write_report(data, date=today, dir=rt.report_dir)
+2026-10-10 00:16:47 | ERROR | app.stderr | <unknown>.<unknown>:0 |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-10-10 00:16:47 | ERROR | app.stderr | <unknown>.<unknown>:0 |   File "D:\PythonProject\MyTbquant\sell_option\strategy\report.py", line 710, in write_report
+2026-10-10 00:16:47 | ERROR | app.stderr | <unknown>.<unknown>:0 |     return save_report(render_report(data), date=date, dir=dir)
+2026-10-10 00:16:47 | ERROR | app.stderr | <unknown>.<unknown>:0 |                        ^^^^^^^^^^^^^^^^^^^
+2026-10-10 00:16:47 | ERROR | app.stderr | <unknown>.<unknown>:0 |   File "D:\PythonProject\MyTbquant\sell_option\strategy\report.py", line 677, in render_report
+2026-10-10 00:16:47 | ERROR | app.stderr | <unknown>.<unknown>:0 |     lines += _render_a(data.candidates)
+2026-10-10 00:16:47 | ERROR | app.stderr | <unknown>.<unknown>:0 |              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-10-10 00:16:47 | ERROR | app.stderr | <unknown>.<unknown>:0 |   File "D:\PythonProject\MyTbquant\sell_option\strategy\report.py", line 461, in _render_a
+2026-10-10 00:16:47 | ERROR | app.stderr | <unknown>.<unknown>:0 |     lines += _render_candidate_detail(c)
+2026-10-10 00:16:47 | ERROR | app.stderr | <unknown>.<unknown>:0 |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-10-10 00:16:47 | ERROR | app.stderr | <unknown>.<unknown>:0 |   File "D:\PythonProject\MyTbquant\sell_option\strategy\report.py", line 563, in _render_candidate_detail
+2026-10-10 00:16:47 | ERROR | app.stderr | <unknown>.<unknown>:0 |     pre.append(_cand_check_html(r))
+2026-10-10 00:16:47 | ERROR | app.stderr | <unknown>.<unknown>:0 |                ^^^^^^^^^^^^^^^^^^^
+2026-10-10 00:16:47 | ERROR | app.stderr | <unknown>.<unknown>:0 |   File "D:\PythonProject\MyTbquant\sell_option\strategy\report.py", line 529, in _cand_check_html
+2026-10-10 00:16:47 | ERROR | app.stderr | <unknown>.<unknown>:0 |     return f'{chip} #{r.rule_id:>2d} {name_pad}：{r.reason}{skipped}'
+2026-10-10 00:16:47 | ERROR | app.stderr | <unknown>.<unknown>:0 |                      ^^^^^^^^^^^^^^^
+2026-10-10 00:16:47 | ERROR | app.stderr | <unknown>.<unknown>:0 | ValueError: Unknown format code 'd' for object of type 'str'

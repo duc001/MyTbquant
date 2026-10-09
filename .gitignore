@@ -9,8 +9,7 @@ __pycache__/
 # tbpy 运行时生成的日志
 log/
 
-# 应用统一日志（sell_option/logs/，按日期拆分）
-sell_option/logs/
+# 应用统一日志（sell_option/logs/）按用户要求入库跟踪
 
 # IDE
 .idea/

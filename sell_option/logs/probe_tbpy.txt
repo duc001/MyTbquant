@@ -1,0 +1,163 @@
+RESULT_JSON_BEGIN
+{
+  "sr_option_symbol_used": "SR611C4600.CZCE",
+  "get_history_n_future_ohlc": {
+    "open": {
+      "__ndarray__": true,
+      "dtype": "float64",
+      "len": 3,
+      "head": [
+        "5485.0",
+        "5464.0",
+        "5492.0"
+      ]
+    },
+    "high": {
+      "__ndarray__": true,
+      "dtype": "float64",
+      "len": 3,
+      "head": [
+        "5504.0",
+        "5502.0",
+        "5554.0"
+      ]
+    },
+    "low": {
+      "__ndarray__": true,
+      "dtype": "float64",
+      "len": 3,
+      "head": [
+        "5455.0",
+        "5442.0",
+        "5488.0"
+      ]
+    },
+    "close": {
+      "__ndarray__": true,
+      "dtype": "float64",
+      "len": 3,
+      "head": [
+        "5475.0",
+        "5491.0",
+        "5546.0"
+      ]
+    },
+    "time": {
+      "__ndarray__": true,
+      "dtype": "object",
+      "len": 3,
+      "head": [
+        "2026-10-08 00:00:00",
+        "2026-10-09 00:00:00",
+        "2026-10-12 00:00:00"
+      ]
+    }
+  },
+  "get_history_n_single_option": {
+    "close": {
+      "__ndarray__": true,
+      "dtype": "float64",
+      "len": 1,
+      "head": [
+        "625.0"
+      ]
+    },
+    "position": {
+      "__ndarray__": true,
+      "dtype": "int64",
+      "len": 1,
+      "head": [
+        "7"
+      ]
+    },
+    "time": {
+      "__ndarray__": true,
+      "dtype": "object",
+      "len": 1,
+      "head": [
+        "2026-08-31 00:00:00"
+      ]
+    }
+  },
+  "get_instrument_option": {
+    "type": "Instrument",
+    "symbol": "SR611C4600.CZCE",
+    "sec_name": "°×ÌÇÆÚÈ¨SR611C4600",
+    "delisted_date": "2026-10-13 00:00:00"
+  },
+  "get_history_n_multi": {
+    "SR611C4600.CZCE": {
+      "close": {
+        "__ndarray__": true,
+        "dtype": "float64",
+        "len": 1,
+        "head": [
+          "625.0"
+        ]
+      },
+      "time": {
+        "__ndarray__": true,
+        "dtype": "object",
+        "len": 1,
+        "head": [
+          "2026-08-31 00:00:00"
+        ]
+      }
+    },
+    "SR701.CZCE": {
+      "close": {
+        "__ndarray__": true,
+        "dtype": "float64",
+        "len": 1,
+        "head": [
+          "5546.0"
+        ]
+      },
+      "time": {
+        "__ndarray__": true,
+        "dtype": "object",
+        "len": 1,
+        "head": [
+          "2026-10-12 00:00:00"
+        ]
+      }
+    }
+  },
+  "get_current_tick": {
+    "type": "NoneType",
+    "repr_head": "None",
+    "last": null,
+    "bidasks_head": null
+  },
+  "get_main_instrument": {
+    "type": "Instrument",
+    "symbol": "SR701.CZCE"
+  },
+  "QuoteFlag_keys": [
+    "CCData",
+    "KCutEquidistant",
+    "KCutShowEndTime",
+    "KCutTradeTime",
+    "KCutTradeTimeNormal",
+    "Null",
+    "OnlyDay",
+    "OnlyNight",
+    "RolloverBackWard",
+    "as_integer_ratio",
+    "bit_count",
+    "bit_length",
+    "conjugate",
+    "denominator",
+    "from_bytes",
+    "imag",
+    "is_integer",
+    "name",
+    "names",
+    "numerator",
+    "real",
+    "to_bytes",
+    "values"
+  ],
+  "get_last_err": ""
+}
+RESULT_JSON_END
