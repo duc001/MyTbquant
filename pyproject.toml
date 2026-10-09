@@ -1,0 +1,12 @@
+[project]
+name = "mytbquant"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "numpy>=1.26",
+    "tbpy",
+]
+
+# tbpy 未发布到 PyPI，来自本地 whl（下载路径见 readme）。换机器时请相应调整此路径。
+[tool.uv.sources]
+tbpy = { path = "C:/Users/du chuan/Downloads/tbpy-3.12.3-py3-none-any.whl" }

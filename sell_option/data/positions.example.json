@@ -1,0 +1,68 @@
+{
+  "_说明": "D16 持仓记录字段示例（对齐 data/positions.db 的 positions 表：开仓+平仓共用一表，status 区分 open/closed）。实盘为人工录入——开仓 INSERT 一行 status='open'，平仓 UPDATE 该行 status='closed' 并填 exit_date/exit_short_premium/exit_prot_premium/realized_pnl/exit_reason。本文件仅作字段示例，策略运行时不读取（唯一数据源是 positions.db）。",
+  "_表结构": "positions(id, entry_date, code, exchange, structure, short_symbol, short_strike, short_premium, short_bid, short_ask, prot_symbol, prot_strike, prot_premium, max_loss, expiry_date, margin, status, exit_date, exit_short_premium, exit_prot_premium, realized_pnl, exit_reason, note)",
+  "_规则": [
+    "最多 6 笔总持仓",
+    "每个品种最多 2 笔",
+    "同持品种最多 3 个（按 distinct 品种代码计数，无板块归并）"
+  ],
+  "_字段口径": {
+    "structure": "single_call / single_put（双卖铁鹰落库时拆成 single_put + single_call 两笔分别录入，本表不单独存 iron_condor，§7.3）",
+    "short_premium": "卖腿权利金（净收入，卖出所得）",
+    "prot_premium": "保护腿权利金（净支出，买入所付）。本策略落库两结构（single_call / single_put）均为带保护腿的单腿侧价差（对应 assemble.c3 词汇），prot_* 非 null；完全裸卖不在枚举内",
+    "max_loss": "最大亏损 =（价差宽度 − 净权利金）× 乘数",
+    "expiry_date": "到期日（期权最后交易日 YYYY-MM-DD，不变量，直接照抄合约挂牌信息）；当前 DTE 由它现算 (expiry_date − today).days，不入库",
+    "margin": "该笔保证金占用额（元），供 §7.1 #7 合计占用 = 存量 + 新仓",
+    "realized_pnl": "已实现盈亏（正盈负亏），仅 closed 行填写"
+  },
+  "示例": [
+    {
+      "entry_date": "2026-09-21",
+      "code": "M",
+      "exchange": "DCE",
+      "structure": "single_put",
+      "short_symbol": "m2701-P-3300",
+      "short_strike": 3300.0,
+      "short_premium": 53.0,
+      "short_bid": null,
+      "short_ask": null,
+      "prot_symbol": "m2701-P-3250",
+      "prot_strike": 3250.0,
+      "prot_premium": 36.5,
+      "max_loss": 335.0,
+      "expiry_date": "2026-12-07",
+      "margin": 335.0,
+      "status": "open",
+      "exit_date": null,
+      "exit_short_premium": null,
+      "exit_prot_premium": null,
+      "realized_pnl": null,
+      "exit_reason": null,
+      "note": "卖 M2701 Put 3300/3250 价差（示例·当前持仓）"
+    },
+    {
+      "entry_date": "2026-08-15",
+      "code": "rb",
+      "exchange": "SHFE",
+      "structure": "single_call",
+      "short_symbol": "rb2611-C-3600",
+      "short_strike": 3600.0,
+      "short_premium": 60.0,
+      "short_bid": null,
+      "short_ask": null,
+      "prot_symbol": "rb2611-C-3700",
+      "prot_strike": 3700.0,
+      "prot_premium": 30.0,
+      "max_loss": 700.0,
+      "expiry_date": "2026-10-14",
+      "margin": 3000.0,
+      "status": "closed",
+      "exit_date": "2026-09-20",
+      "exit_short_premium": 25.0,
+      "exit_prot_premium": 12.0,
+      "realized_pnl": 170.0,
+      "exit_reason": "50%止盈",
+      "note": "卖 rb2611 Call 3600/3700 价差（示例·已平仓：净权利金30/单、平回成本13/单、盈亏(30−13)×10=170）"
+    }
+  ]
+}
