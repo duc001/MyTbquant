@@ -15,7 +15,8 @@ sell_option/logs/
 # IDE
 .idea/
 
-# 运行时数据（行情缓存 + 持仓真相库，含账户持仓，绝不入库；*.example.json 为字段示例文档，保留）
+# 运行时数据：行情缓存(db) 不入库；positions.db 为持仓真相库，按用户要求入库跟踪
 sell_option/data/*.db
+!sell_option/data/positions.db
 sell_option/data/main_month.json
 
