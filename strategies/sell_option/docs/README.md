@@ -12,16 +12,17 @@
 | [数据架构与缓存策略.md](数据架构与缓存策略.md) | 取数层（D01–D18）的**逐表稳定性分类**（稳定/中间/实时）、缓存库与 `pull_date` 机制、两阶段运行（prefetch / scan --offline）设计、实时数据边界。 | 梳理"哪些数据能预取/缓存、哪些必须实时"、落地预取+离线模式、做数据就绪门禁时。 |
 | [tbpy方法参考.md](tbpy方法参考.md) | tbpy 各方法**真实请求/返回示例**（连/断、get_symbols、get_main_instrument、get_instrument、get_history_n 含限流与批量分页、get_current_tick、get_last_err、QuoteFlag）+ 策略回调 API。 | 写/改取数代码、遇到 tbpy 限流/堆损坏/返回结构疑问时，当 API 速查手册。 |
 
-## 二、外部教程与配图（reference/，TBQuant 官方资料，仅供参考）
+## 二、外部教程与配图（已外置到项目根 `docs/reference/`，TBQuant 官方资料，仅供参考）
 
 > 官方文档可能与本项目实际行为有出入，**以本仓库自研文档 + 代码为准**。
+> 这些 TBquant 平台资料属于**平台级通用资料、不专属本策略**，已上移到项目根 `docs/reference/`（所有策略共用），故不在本单元内。
 
 | 文档 | 用途 | 何时看 |
 |---|---|---|
-| [reference/tbpy教程.md](reference/tbpy教程.md) | tbpy Python 用法教程（案例1 双均线、案例2 读写数据等）。 | 初次接触 tbpy、想看官方示例时；`dual_ma.py`/`config.py`/`query_data.py` 注释中的引用即此。 |
-| [reference/Tbquant教程.docx](reference/Tbquant教程.docx) | TBQuant 平台（自有语言）开发教程。 | 需要理解 TBQuant 平台本身（非 Python/tbpy）时。 |
-| [reference/Tbquant软件使用文档.docx](reference/Tbquant软件使用文档.docx) | TBQuant 客户端使用说明。 | 安装/登录/切换产品·账户、客户端配置问题时。 |
-| reference/img_*.png | 上述教程的配图（事件功能、事件驱动机制、运行结果等）。 | 配合教程阅读。 |
+| `docs/reference/tbpy教程.md` | tbpy Python 用法教程（案例1 双均线、案例2 读写数据等）。 | 初次接触 tbpy、想看官方示例时；`query_data.py` 等注释中的引用即此。 |
+| `docs/reference/Tbquant教程.docx` | TBQuant 平台（自有语言）开发教程。 | 需要理解 TBQuant 平台本身（非 Python/tbpy）时。 |
+| `docs/reference/Tbquant软件使用文档.docx` | TBQuant 客户端使用说明。 | 安装/登录/切换产品·账户、客户端配置问题时。 |
+| `docs/reference/img_*.png` | 上述教程的配图（事件功能、事件驱动机制、运行结果等）。 | 配合教程阅读。 |
 
 ## 三、配套脚本（在 `examples/`，与 tbpy方法参考 联动）
 
