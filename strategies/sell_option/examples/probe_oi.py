@@ -17,6 +17,18 @@
     $env:OI_SECS=30; python examples/probe_oi.py                    # 自定义最长运行秒数
 """
 from __future__ import annotations
+import sys
+from pathlib import Path
+_HERE = Path(__file__).resolve().parent
+if (_HERE / 'sell_option' / '__init__.py').exists():
+    _UNIT = _HERE
+else:
+    _UNIT = _HERE.parent
+_STRATEGIES = _UNIT.parent
+_ROOT = _STRATEGIES.parent
+for _p in (str(_STRATEGIES), str(_UNIT), str(_ROOT)):
+    if _p not in sys.path:
+        sys.path.insert(0, _p)
 
 import datetime as dt
 import json
@@ -25,7 +37,6 @@ import sys
 from pathlib import Path
 
 # 允许直接运行本文件（python examples/probe_oi.py）
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import tbpy  # noqa: E402
 import config  # noqa: E402

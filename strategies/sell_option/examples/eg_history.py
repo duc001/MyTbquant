@@ -20,13 +20,24 @@
   注：单个合约(如 eg2701，上市 2026-01)存续不足 2 年，日线只从其上市日起；
       要连续多年日线用指数 eg000.DCE。历史查询有全局限流(约 60s 一次)，勿频繁重跑。
 """
+import sys
+from pathlib import Path
+_HERE = Path(__file__).resolve().parent
+if (_HERE / 'sell_option' / '__init__.py').exists():
+    _UNIT = _HERE
+else:
+    _UNIT = _HERE.parent
+_STRATEGIES = _UNIT.parent
+_ROOT = _STRATEGIES.parent
+for _p in (str(_STRATEGIES), str(_UNIT), str(_ROOT)):
+    if _p not in sys.path:
+        sys.path.insert(0, _p)
 import datetime
 import os
 import sys
 import time
 
 # 允许直接运行本文件（python examples/eg_history.py）
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import tbpy  # noqa: E402
 

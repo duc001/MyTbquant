@@ -13,6 +13,18 @@
         python main.py strategy -a sim2              # 用仿真账户2
         python main.py strategy -p tbquant3 -a sim2  # 同时指定
 """
+import sys
+from pathlib import Path
+_HERE = Path(__file__).resolve().parent
+if (_HERE / 'sell_option' / '__init__.py').exists():
+    _UNIT = _HERE
+else:
+    _UNIT = _HERE.parent
+_STRATEGIES = _UNIT.parent
+_ROOT = _STRATEGIES.parent
+for _p in (str(_STRATEGIES), str(_UNIT), str(_ROOT)):
+    if _p not in sys.path:
+        sys.path.insert(0, _p)
 import argparse
 import sys
 

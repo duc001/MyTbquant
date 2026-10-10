@@ -2,6 +2,18 @@
 带看门狗：75s 强制 os._exit，避免客户端无响应时卡死。
 绝不动 get_symbols（会物化 ~11 万对象损坏堆）。
 """
+import sys
+from pathlib import Path
+_HERE = Path(__file__).resolve().parent
+if (_HERE / 'sell_option' / '__init__.py').exists():
+    _UNIT = _HERE
+else:
+    _UNIT = _HERE.parent
+_STRATEGIES = _UNIT.parent
+_ROOT = _STRATEGIES.parent
+for _p in (str(_STRATEGIES), str(_UNIT), str(_ROOT)):
+    if _p not in sys.path:
+        sys.path.insert(0, _p)
 import json
 import os
 import sys
@@ -10,7 +22,6 @@ import threading
 from pathlib import Path
 
 # 把项目根加入 sys.path（脚本在 sell_option/ 下，config.py/runtime.py 在根）
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 # 看门狗：超时强制退出
 def _watchdog(sec: int):

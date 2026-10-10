@@ -1,6 +1,18 @@
 """精确对账：交易所官方乘数 vs 边界表"乘数"列（逐品种打印）"""
 import sys
 from pathlib import Path
+_HERE = Path(__file__).resolve().parent
+if (_HERE / 'sell_option' / '__init__.py').exists():
+    _UNIT = _HERE
+else:
+    _UNIT = _HERE.parent
+_STRATEGIES = _UNIT.parent
+_ROOT = _STRATEGIES.parent
+for _p in (str(_STRATEGIES), str(_UNIT), str(_ROOT)):
+    if _p not in sys.path:
+        sys.path.insert(0, _p)
+import sys
+from pathlib import Path
 
 if sys.stdout.encoding and sys.stdout.encoding.lower() != "utf-8":
     sys.stdout.reconfigure(encoding="utf-8")
@@ -28,7 +40,6 @@ OFFICIAL = {
 try:
     from sell_option.fetchers.boundary_table import load_boundary_table
 except ImportError:
-    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
     from sell_option.fetchers.boundary_table import load_boundary_table
 
 rows = load_boundary_table()

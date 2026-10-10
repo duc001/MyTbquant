@@ -2,6 +2,18 @@
 
 单元测试用 mock 数据构造器——与业务代码 __main__ 段（只连真实数据源）严格分离。"""
 from __future__ import annotations
+import sys
+from pathlib import Path
+_HERE = Path(__file__).resolve().parent
+if (_HERE / 'sell_option' / '__init__.py').exists():
+    _UNIT = _HERE
+else:
+    _UNIT = _HERE.parent
+_STRATEGIES = _UNIT.parent
+_ROOT = _STRATEGIES.parent
+for _p in (str(_STRATEGIES), str(_UNIT), str(_ROOT)):
+    if _p not in sys.path:
+        sys.path.insert(0, _p)
 
 import datetime as dt
 from dataclasses import dataclass
@@ -11,7 +23,6 @@ import sys
 import pytest
 
 # 确保项目根在 sys.path（pytest 从 tests/ 跑时）
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from sell_option.fetchers.models import Verdict, ChainContract
 from sell_option.fetchers.d09_d10_premium import PremiumQuote, PremiumSet

@@ -49,15 +49,15 @@
 四. 运行方式
     在项目根目录执行：
     1) 只读连通性与数据查询(安全，不下单)：
-         python main.py check        (等价于直接 python main.py)
+         python strategies/sell_option/main.py check        (等价于直接 python strategies/sell_option/main.py)
     2) 期权数据查询(只读)：合约元数据 / 实时行情 / 标的主力与历史
-         python main.py option       (标的品种由 config.OPTION_UNDERLYING 指定，默认 m.DCE)
+         python strategies/sell_option/main.py option       (标的品种由 config.OPTION_UNDERLYING 指定，默认 m.DCE)
     3) 实时收集具体合约K线(subscribe_bar，只读，限时自动退出；休市无行情流)：
-         python main.py collect      (默认 eg2611.DCE 1d 收集20s；-f 周期 -t 秒数)
+         python strategies/sell_option/main.py collect      (默认 eg2611.DCE 1d 收集20s；-f 周期 -t 秒数)
     4) 策略接线冒烟测试(限时自动退出；休市时不会下单)：
-         python main.py smoke        (默认约15秒，可用 $env:SMOKE_SECS 调整)
+         python strategies/sell_option/main.py smoke        (默认约15秒，可用 $env:SMOKE_SECS 调整)
     5) 运行双均线策略(会向账户下单，需输入 yes 二次确认；建议开盘时段运行)：
-         python main.py strategy
+         python strategies/sell_option/main.py strategy
     配置可用环境变量覆盖，例如(PowerShell)：
          $env:TBPY_PRODUCT    = "tbquant"
          $env:TBPY_ACCOUNT_ID = "tbf_fasot1"
@@ -68,11 +68,11 @@
     客户端；查询/策略等其余代码完全通用，切换无需改动其它任何地方。
     三种方式(优先级由高到低)：
     1) 命令行临时切换(推荐，一次性)：
-         python main.py check    -p tbquant3
-         python main.py strategy -p tbquant3
+         python strategies/sell_option/main.py check    -p tbquant3
+         python strategies/sell_option/main.py strategy -p tbquant3
     2) 环境变量(当前终端会话内持续生效)：
          $env:TBPY_PRODUCT = "tbquant3"
-         python main.py check
+         python strategies/sell_option/main.py check
     3) 改默认值(长期)：编辑 config.py 中 PRODUCT_KEY 的默认值。
     注意：切到哪个产品，就必须先启动并登录对应客户端(TBQuant / TBQuant3)；
     且账户 ACCOUNT_ID 通常也需切换为该客户端下已登录的账户(否则订阅账户会失败)。
@@ -82,13 +82,13 @@
         sim1 -> tbf_fasot1        sim2 -> 66107987
     账户只在“订阅账户/下单”时用到(check 只读查询不依赖具体账户)。切换方式(优先级由高到低)：
     1) 命令行 -a(推荐)：可填别名，也可直接填原始 account_id
-         python main.py strategy -a sim2
-         python main.py smoke    -a 66107987
+         python strategies/sell_option/main.py strategy -a sim2
+         python strategies/sell_option/main.py smoke    -a 66107987
     2) 环境变量：
          $env:TBPY_ACCOUNT_ID = "sim2"      (或直接填原始 ID)
-         python main.py strategy
+         python strategies/sell_option/main.py strategy
     3) 改默认/增删账户：编辑 config.py 的 DEFAULT_ACCOUNT 或 ACCOUNTS 字典。
-    -a 可与 -p 组合：python main.py strategy -p tbquant3 -a sim2
+    -a 可与 -p 组合：python strategies/sell_option/main.py strategy -p tbquant3 -a sim2
 
 七. 期权数据字段速查 (实测 tbpy 3.12.3；完整可运行示例见 examples/option_data.py)
     A. 合约元数据 get_instrument -> Instrument（仅下列字段，无期权专用字段）：

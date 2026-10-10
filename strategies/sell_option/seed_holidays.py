@@ -14,6 +14,18 @@ tbpy.is_holiday() 不再调用（其假日日历对部分日期误报为假期�
 ⚠ 期货交易所按自身交易日历开收市，与公众调休补班无关：补班日（落在周末）市场仍休市，无需额外开市覆盖。
 运行（项目根目录、激活 venv）：  .venv/Scripts/python.exe seed_holidays.py
 """
+import sys
+from pathlib import Path
+_HERE = Path(__file__).resolve().parent
+if (_HERE / 'sell_option' / '__init__.py').exists():
+    _UNIT = _HERE
+else:
+    _UNIT = _HERE.parent
+_STRATEGIES = _UNIT.parent
+_ROOT = _STRATEGIES.parent
+for _p in (str(_STRATEGIES), str(_UNIT), str(_ROOT)):
+    if _p not in sys.path:
+        sys.path.insert(0, _p)
 from datetime import date, timedelta
 from sell_option.fetchers.calendar_cache import add_calendar_date
 from sell_option.fetchers.session_hours import seed_session_hours

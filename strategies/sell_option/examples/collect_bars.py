@@ -18,6 +18,18 @@
     python examples/collect_bars.py eg2611.DCE -f 5m -t 30     # 5 分钟线，收集 30s
     python examples/collect_bars.py eg2611.DCE -f 1d --csv data/eg2611_1d.csv
 """
+import sys
+from pathlib import Path
+_HERE = Path(__file__).resolve().parent
+if (_HERE / 'sell_option' / '__init__.py').exists():
+    _UNIT = _HERE
+else:
+    _UNIT = _HERE.parent
+_STRATEGIES = _UNIT.parent
+_ROOT = _STRATEGIES.parent
+for _p in (str(_STRATEGIES), str(_UNIT), str(_ROOT)):
+    if _p not in sys.path:
+        sys.path.insert(0, _p)
 import argparse
 import csv
 import datetime
@@ -25,7 +37,6 @@ import os
 import sys
 
 # 允许直接运行本文件（python examples/collect_bars.py）
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import tbpy  # noqa: E402
 

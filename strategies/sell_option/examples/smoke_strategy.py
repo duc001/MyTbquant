@@ -13,12 +13,23 @@
     python main.py smoke            # 默认跑 15 秒
     $env:SMOKE_SECS = "20"; python main.py smoke
 """
+import sys
+from pathlib import Path
+_HERE = Path(__file__).resolve().parent
+if (_HERE / 'sell_option' / '__init__.py').exists():
+    _UNIT = _HERE
+else:
+    _UNIT = _HERE.parent
+_STRATEGIES = _UNIT.parent
+_ROOT = _STRATEGIES.parent
+for _p in (str(_STRATEGIES), str(_UNIT), str(_ROOT)):
+    if _p not in sys.path:
+        sys.path.insert(0, _p)
 import datetime
 import os
 import sys
 
 # 允许脚本被直接运行时也能 import 到项目根目录下的模块
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import tbpy  # noqa: E402
 
