@@ -184,6 +184,7 @@ def seed_session_hours() -> None:
     for p in ["AP", "CJ"]:
         _upsert("CZCE", p, day, [], "无夜盘")
     _upsert("DCE", "jd", day, [], "鸡蛋无夜盘")
+    _upsert("DCE", "lh", day, [], "生猪无夜盘")
     # SHFE 金属夜盘延长
     for p in ["cu", "al", "zn", "pb", "ni", "sn", "ag", "au", "ss"]:
         _upsert("SHFE", p, day, [{"start": "21:00", "end": "02:30"}], "夜盘 21:00-02:30")
