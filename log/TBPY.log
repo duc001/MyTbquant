@@ -144869,3 +144869,332 @@
 2026-10-11 19:39:49,422 [DEBUG] DCAPI release ice,destory communicator success 
 2026-10-11 19:39:49,422 [INFO ] DCAPI tbdcapi user=,sessionid=1,login out! 
 2026-10-11 19:39:49,422 [DEBUG] DCAPI ICEAuthenProxy stop end 
+2026-10-13 00:29:15,289 [DEBUG] Event ,setName 
+2026-10-13 00:29:51,397 [DEBUG] Event ,setName 
+2026-10-13 00:33:10,866 [DEBUG] Event ,setName 
+2026-10-13 00:33:32,153 [INFO ] TBCommon GetFileVersionInfoSize fail,moduleName:TBCommon  
+2026-10-13 00:33:32,153 [WARN ] TBPY parser_version_str rootPath=C:\Users\du chuan\AppData\Roaming\TBQuant,version= 
+2026-10-13 00:33:32,155 [DEBUG] AuthAgent createService,jsonParam=[{"serviceName":"AuthenService","dllPath":"d:\\PythonProject\\MyTbquant\\.venv\\Lib\\site-packages\\tbpy\\TBDataCenterAPI.dll","procName":"createAuthenService","parameter":{"online":true}},{"serviceName":"BaseService","dllPath":"d:\\PythonProject\\MyTbquant\\.venv\\Lib\\site-packages\\tbpy\\TBDataCenterAPI.dll","procName":"createBaseService","parameter":{"online":true}},{"serviceName":"TradeService","dllPath":"d:\\PythonProject\\MyTbquant\\.venv\\Lib\\site-packages\\tbpy\\TBDataCenterAPI.dll","procName":"createTradeService","parameter":{"online":true}},{"serviceName":"TradeSimuService","dllPath":"d:\\PythonProject\\MyTbquant\\.venv\\Lib\\site-packages\\tbpy\\TBDataCenterAPI.dll","procName":"createTradeSimuService","parameter":{"online":true}}] 
+2026-10-13 00:33:32,171 [INFO ] BaseService HolidayCache construct  
+2026-10-13 00:33:32,172 [TRACE] TBCommon TradingDayCache construct 
+2026-10-13 00:33:32,172 [INFO ] DCAPI QuoteHisDispatcher construct 
+2026-10-13 00:33:32,172 [INFO ] DCAPI QuoteRealDispatcher construct 
+2026-10-13 00:33:32,172 [INFO ] DCAPI DataHisDispatcher construct 
+2026-10-13 00:33:32,172 [INFO ] DCAPI DataRealDispatcher construct 
+2026-10-13 00:33:32,173 [DEBUG] AuthAgent InitService start service begin 
+2026-10-13 00:33:32,175 [DEBUG] DCAPI ICEServiceManager init option=1,port= 
+2026-10-13 00:33:32,175 [DEBUG] DCAPI init ice,start create communicator 
+2026-10-13 00:33:32,175 [TRACE] DCAPI start ice monitor ,check tbquant execute path:C:\Users\du chuan\AppData\Roaming\TBQuant\TBDataCenter\tbquantdc.exe 
+2026-10-13 00:33:32,177 [DEBUG] DCAPI createCommunicator use default config 
+2026-10-13 00:33:32,193 [TRACE] DCAPI shm_info,shm=CUSERSDUCHUANAPPDATAROAMINGTBQUANTTBDATACENTERSHM,mtx=CUSERSDUCHUANAPPDATAROAMINGTBQUANTTBDATACENTERSHMTBPROCESSMTX,endpoint=tcp -h 127.0.0.1 -p 5459 
+2026-10-13 00:33:32,197 [INFO ] DCAPI QuoteHisDispatcher start begin 
+2026-10-13 00:33:32,197 [INFO ] DCAPI QuoteHisDispatcher start end 
+2026-10-13 00:33:32,197 [INFO ] DCAPI QuoteRealDispatcher start begin 
+2026-10-13 00:33:32,197 [INFO ] DCAPI QuoteRealDispatcher start end 
+2026-10-13 00:33:32,197 [INFO ] DCAPI DataHisDispatcher start begin 
+2026-10-13 00:33:32,197 [INFO ] DCAPI DataHisDispatcher start end 
+2026-10-13 00:33:32,197 [INFO ] DCAPI DataRealDispatcher start begin 
+2026-10-13 00:33:32,197 [INFO ] DCAPI DataRealDispatcher start end 
+2026-10-13 00:33:32,197 [INFO ] DCAPI CommonDispatcher construct 
+2026-10-13 00:33:32,197 [INFO ] DCAPI CommonDispatcher start begin 
+2026-10-13 00:33:32,197 [INFO ] DCAPI CommonDispatcher start end 
+2026-10-13 00:33:32,198 [DEBUG] DCAPI init ice,create communicator success 
+2026-10-13 00:33:32,200 [INFO ] DCAPI connect tbquantdc success 
+2026-10-13 00:33:32,205 [DEBUG] DCAPI ICEAuthenProxy start 
+2026-10-13 00:33:32,205 [DEBUG] AuthAgent InitService start service end 
+2026-10-13 00:33:32,213 [DEBUG] AuthAgent InitService end 
+2026-10-13 00:33:32,213 [DEBUG] AuthAgent Login start 
+2026-10-13 00:33:32,213 [DEBUG] AuthAgent Login get host begin 
+2026-10-13 00:33:32,271 [TRACE] DCAPI 获取本机mac地址成功, mac:78AF08402A2708402A27 
+2026-10-13 00:33:32,271 [DEBUG] AuthAgent Login get host end 
+2026-10-13 00:33:32,271 [DEBUG] DCAPI ICEAuthenProxy login start 
+2026-10-13 00:33:32,271 [INFO ] DCAPI try lock process mutex success,mutex key:2tcp-h127001-p5459 
+2026-10-13 00:33:32,271 [INFO ] DCAPI 【softversion】,versionNo=3.12.3,softType=Standard,platformType=TBPYPY 
+2026-10-13 00:33:32,272 [INFO ] DCAPI tbdcapi user=,sessionid=2,login success! 
+2026-10-13 00:33:32,274 [DEBUG] DCAPI ICEAuthenProxy login end 
+2026-10-13 00:33:32,276 [DEBUG] AuthAgent Login end 
+2026-10-13 00:33:32,277 [DEBUG] DCAPI start IceDataProxy, ret=OK@ 
+2026-10-13 00:33:32,278 [DEBUG] DCAPI ICETradeSimuProxy start begin 
+2026-10-13 00:33:32,280 [DEBUG] DCAPI ICETradeSimuProxy start end,OK@ 
+2026-10-13 00:33:32,283 [DEBUG] DCAPI OnRspStatus begin,天风期货@10000115,status=已登录(服务中),no=OK,note=o=OK,note= 
+2026-10-13 00:33:32,283 [DEBUG] DCAPI CacheTradeManager construct 
+2026-10-13 00:33:32,284 [DEBUG] DCAPI OnRspStatus end,天风期货@100001150115 
+2026-10-13 00:33:32,284 [DEBUG] DCAPI OnRspStatus begin,宏源期货@903001871,status=已登录(服务中),no=OK,note=o=OK,note= 
+2026-10-13 00:33:32,284 [DEBUG] DCAPI OnRspStatus end,宏源期货@9030018711871 
+2026-10-13 00:33:32,284 [DEBUG] DCAPI OnRspStatus begin,TB期货模拟@66107987,status=已登录(服务中),no=OK,note=o=OK,note= 
+2026-10-13 00:33:32,284 [DEBUG] DCAPI OnRspStatus end,TB期货模拟@661079877987 
+2026-10-13 00:33:32,284 [DEBUG] DCAPI OnRspStatus begin,TB期货模拟@tbf_fasot1,status=已登录(服务中),no=OK,note=o=OK,note= 
+2026-10-13 00:33:32,284 [DEBUG] DCAPI OnRspStatus end,TB期货模拟@tbf_fasot1sot1 
+2026-10-13 00:33:32,285 [TRACE] DCAPI OnPositionSnapshot,[3],天风期货@10000115@CNY@CHNFuture@Speculatioatio 
+2026-10-13 00:33:32,285 [TRACE] DCAPI OnPositionSnapshot,[7],TB期货模拟@tbf_fasot1@CNY@CHNFuture@Speculatioatio 
+2026-10-13 00:33:32,285 [TRACE] DCAPI OnPositionSnapshot,[7],宏源期货@903001871@CNY@CHNFuture@Speculatioatio 
+2026-10-13 00:33:32,642 [DEBUG] BaseService initBase initConfig,size=3,OK@ 
+2026-10-13 00:33:32,642 [DEBUG] BaseService initBase initConfig,SimuIgnoreDelayMs=3000 
+2026-10-13 00:33:32,642 [DEBUG] BaseService initBase initConfig,SimuMatchDelayMs=3000 
+2026-10-13 00:33:32,642 [DEBUG] BaseService initBase initConfig,SimuLimitCancelCNT=500 
+2026-10-13 00:33:32,642 [DEBUG] BaseService initBase=OK@,initMarket=OK@,initCategory=OK@,initExchange=OK@,lastBase=0000027F2E54E830,nowBase=0000027F2E54D930 
+2026-10-13 00:33:32,642 [DEBUG] BaseService Market,UnknownMarket,0,,category=UnknownCategory|Bonds|Funds,exchange=UnknownExchange 
+2026-10-13 00:33:32,642 [DEBUG] BaseService Market,CHNFuture,1,期货,category=Futures|Options,exchange=SHFE|DCE|CZCE|CFFEX|INE|TBFT|GFEXEX 
+2026-10-13 00:33:32,642 [DEBUG] BaseService Market,CHNStock,2,股票,category=Stocks,exchange=SSE|SZSE|TBST|OTCF|BSESE 
+2026-10-13 00:33:32,642 [DEBUG] BaseService Market,CHNOptions,4,期权,category=,exchange=e= 
+2026-10-13 00:33:32,642 [DEBUG] BaseService Market,GlobalMarket,8,国外期货,category=ForeignFutures,exchange=CBOT|CME|NYBOT|NYMEX|SGX|TOCOM|KRX|LME|ICE|EUREX|LIFFE|BMD|SFE|TFEX|COMEX|APEX|DME|JPX|ECBOT|IPE|WORLDINDEXNDEX 
+2026-10-13 00:33:32,642 [DEBUG] BaseService Market,GlobalStockMarket,16,国外证券,category=ForeignStocks,exchange=HKEX|NYSE|NASDAQ|OSE|OSE 
+2026-10-13 00:33:32,642 [DEBUG] BaseService Market,CHNSpot,32,现货,category=SpotTrans,exchange=BOCE|SGEGE 
+2026-10-13 00:33:32,642 [DEBUG] BaseService Market,Forexs,64,外汇,category=Forexs,exchange=FOREXEX 
+2026-10-13 00:33:32,642 [DEBUG] BaseService Market,TBNews,128,资讯,category=,exchange=e= 
+2026-10-13 00:33:32,642 [DEBUG] BaseService Market,CHNStockSnap,256,查询快照,category=,exchange=nge= 
+2026-10-13 00:33:32,642 [DEBUG] BaseService Market,MobileMonitor,512,移动监控,category=,exchange=nge= 
+2026-10-13 00:33:32,642 [DEBUG] BaseService Category,UnknownCategory,-1,未知,market=UnknownMarket,exchange=UnknownExchangege 
+2026-10-13 00:33:32,642 [DEBUG] BaseService Category,Stocks,0,股票,market=CHNStock,exchange=SSE|SZSE|TBST|OTCF|BSESE 
+2026-10-13 00:33:32,642 [DEBUG] BaseService Category,Futures,1,期货,market=CHNFuture,exchange=SHFE|DCE|CZCE|CFFEX|INE|TBFT|GFEXEX 
+2026-10-13 00:33:32,642 [DEBUG] BaseService Category,Forexs,2,外汇,market=Forexs,exchange=FOREXEX 
+2026-10-13 00:33:32,642 [DEBUG] BaseService Category,Bonds,3,债券,market=UnknownMarket,exchange=e= 
+2026-10-13 00:33:32,642 [DEBUG] BaseService Category,Funds,4,基金,market=UnknownMarket,exchange=e= 
+2026-10-13 00:33:32,642 [DEBUG] BaseService Category,Options,5,期权,market=CHNFuture,exchange=SHFE|DCE|CZCE|CFFEX|INE|SSE|SZSE|BSE|GFEXEX 
+2026-10-13 00:33:32,642 [DEBUG] BaseService Category,SpotTrans,6,现货,market=CHNSpot,exchange=BOCE|SGEGE 
+2026-10-13 00:33:32,642 [DEBUG] BaseService Category,ForeignFutures,7,外盘期货,market=GlobalMarket,exchange=CBOT|CME|NYBOT|NYMEX|HKEX|SGX|TOCOM|KRX|LME|ICE|EUREX|LIFFE|BMD|SFE|TFEX|COMEX|APEX|DME|JPX|ECBOT|IPE|WORLDINDEXNDEX 
+2026-10-13 00:33:32,642 [DEBUG] BaseService Category,ForeignStocks,8,外盘股票,market=GlobalStockMarket,exchange=HKEX|NYSE|NASDAQ|OSE|OSE 
+2026-10-13 00:33:32,642 [DEBUG] BaseService Exchange,UnknownExchange,-1,未知,market=UnknownMarketet 
+2026-10-13 00:33:32,642 [DEBUG] BaseService Exchange,SHFE,0,上海期货交易所,market=CHNFutureNFuture 
+2026-10-13 00:33:32,642 [DEBUG] BaseService Exchange,DCE,1,大连商品交易所,market=CHNFutureNFuture 
+2026-10-13 00:33:32,642 [DEBUG] BaseService Exchange,CZCE,2,郑州商品交易所,market=CHNFutureNFuture 
+2026-10-13 00:33:32,642 [DEBUG] BaseService Exchange,CFFEX,3,中国金融期货交易所,market=CHNFutureCHNFuture 
+2026-10-13 00:33:32,642 [DEBUG] BaseService Exchange,INE,4,上海国际能源交易中心,market=CHNFuture=CHNFuture 
+2026-10-13 00:33:32,642 [DEBUG] BaseService Exchange,SSE,5,上海证券交易所,market=CHNStockHNStock 
+2026-10-13 00:33:32,642 [DEBUG] BaseService Exchange,SZSE,6,深圳证券交易所,market=CHNStockHNStock 
+2026-10-13 00:33:32,642 [DEBUG] BaseService Exchange,BOCE,7,渤海商品交易所,market=CHNSpotCHNSpot 
+2026-10-13 00:33:32,642 [DEBUG] BaseService Exchange,SGE,8,上海黄金交易所,market=CHNSpotCHNSpot 
+2026-10-13 00:33:32,642 [DEBUG] BaseService Exchange,CBOT,9,芝加哥期货交易所,market=GlobalMarketalMarket 
+2026-10-13 00:33:32,642 [DEBUG] BaseService Exchange,CME,10,芝加哥商业交易所,market=GlobalMarketalMarket 
+2026-10-13 00:33:32,642 [DEBUG] BaseService Exchange,NYBOT,11,纽约期货交易所,market=GlobalMarketlMarket 
+2026-10-13 00:33:32,642 [DEBUG] BaseService Exchange,NYMEX,12,纽约商业期货交易所,market=GlobalMarketbalMarket 
+2026-10-13 00:33:32,642 [DEBUG] BaseService Exchange,HKEX,13,香港交易所,market=GlobalStockMarketarket 
+2026-10-13 00:33:32,642 [DEBUG] BaseService Exchange,SGX,14,新加坡交易所,market=GlobalMarketMarket 
+2026-10-13 00:33:32,642 [DEBUG] BaseService Exchange,TOCOM,15,东京商品交易所,market=GlobalMarketlMarket 
+2026-10-13 00:33:32,643 [DEBUG] BaseService Exchange,KRX,16,韩国证券期货交易所,market=GlobalMarketbalMarket 
+2026-10-13 00:33:32,643 [DEBUG] BaseService Exchange,LME,17,伦敦金属交易所,market=GlobalMarketlMarket 
+2026-10-13 00:33:32,643 [DEBUG] BaseService Exchange,ICE,18,洲际交易所,market=GlobalMarketarket 
+2026-10-13 00:33:32,643 [DEBUG] BaseService Exchange,EUREX,19,欧洲期货交易所,market=GlobalMarketlMarket 
+2026-10-13 00:33:32,643 [DEBUG] BaseService Exchange,LIFFE,20,伦敦国际金融交易所,market=GlobalMarketbalMarket 
+2026-10-13 00:33:32,643 [DEBUG] BaseService Exchange,BMD,21,马来西亚交易所,market=GlobalMarketlMarket 
+2026-10-13 00:33:32,643 [DEBUG] BaseService Exchange,SFE,22,悉尼期货交易所,market=GlobalMarketlMarket 
+2026-10-13 00:33:32,643 [DEBUG] BaseService Exchange,TFEX,23,泰国期货交易所,market=GlobalMarketlMarket 
+2026-10-13 00:33:32,643 [DEBUG] BaseService Exchange,NYSE,24,纽约证券交易所,market=GlobalStockMarketkMarket 
+2026-10-13 00:33:32,643 [DEBUG] BaseService Exchange,NASDAQ,25,纳斯达克,market=GlobalStockMarketrket 
+2026-10-13 00:33:32,643 [DEBUG] BaseService Exchange,FOREX,26,外汇市场,market=Forexsrexs 
+2026-10-13 00:33:32,643 [DEBUG] BaseService Exchange,COMEX,27,纽约金属交易所,market=GlobalMarketlMarket 
+2026-10-13 00:33:32,643 [DEBUG] BaseService Exchange,APEX,28,新加坡亚太交易所,market=GlobalMarketalMarket 
+2026-10-13 00:33:32,643 [DEBUG] BaseService Exchange,DME,29,迪拜商品交易所,market=GlobalMarketlMarket 
+2026-10-13 00:33:32,643 [DEBUG] BaseService Exchange,JPX,30,日本交易所集团,market=GlobalMarketlMarket 
+2026-10-13 00:33:32,643 [DEBUG] BaseService Exchange,ECBOT,31,芝加哥电子商品交易所,market=GlobalMarketobalMarket 
+2026-10-13 00:33:32,643 [DEBUG] BaseService Exchange,IPE,32,伦敦国际石油交易所,market=GlobalMarketbalMarket 
+2026-10-13 00:33:32,643 [DEBUG] BaseService Exchange,OSE,33,大阪证券交易所,market=GlobalStockMarketkMarket 
+2026-10-13 00:33:32,643 [DEBUG] BaseService Exchange,WORLDINDEX,34,全球指数,market=GlobalMarketrket 
+2026-10-13 00:33:32,643 [DEBUG] BaseService Exchange,TBFT,35,开拓者期货指数,market=CHNFutureNFuture 
+2026-10-13 00:33:32,643 [DEBUG] BaseService Exchange,TBST,36,开拓者证券指数,market=CHNStockHNStock 
+2026-10-13 00:33:32,643 [DEBUG] BaseService Exchange,OTCF,37,场外基金,market=CHNStocktock 
+2026-10-13 00:33:32,643 [DEBUG] BaseService Exchange,BSE,38,北京证券交易所,market=CHNStockHNStock 
+2026-10-13 00:33:32,643 [DEBUG] BaseService Exchange,GFEX,39,广州期货交易所,market=CHNFutureNFuture 
+2026-10-13 00:33:32,819 [INFO ] BaseService HolidayCache construct  
+2026-10-13 00:33:32,849 [TRACE] TBCommon TradingDayCache construct 
+2026-10-13 00:33:33,125 [DEBUG] TBCommon RelativeSymbolCache init,srcSize=1166,cacheMapSize=1166,mainMapSize=7175,sndMainMapSize=4232 
+2026-10-13 00:33:34,953 [DEBUG] TBCommon resetCodePropByRule crb=Futures, CodeProperties size=117131 
+2026-10-13 00:33:34,953 [DEBUG] TBCommon resetCodePropByBigCate begin category=Futures, CodeProperties size=117131 
+2026-10-13 00:33:34,953 [DEBUG] TBCommon CodePropertyCache clearPropByBigCate bigcate= 1,exchsize=7,exchs=SHFE;DCE;CZCE;CFFEX;INE;TBFT;GFEX; 
+2026-10-13 00:33:35,187 [DEBUG] TBCommon CodePropertyCache genTimePeriodsCodes, codeEx=pfcode.SHFE,ret=OK@,dealTimesV2=|21:00-02:30;09:00-11:30;13:00-15:15;||||| 
+2026-10-13 00:33:35,187 [DEBUG] TBCommon CodePropertyCache genTimePeriodsCodes default, codeEx=pscode.SSE,ret=OK@,dealTimesV2=|09:00-15:00;||||| 
+2026-10-13 00:33:35,187 [DEBUG] TBCommon resetCodePropByBigCate end category=Futures 
+2026-10-13 00:33:35,187 [DEBUG] TBCommon  TradingDayCache refreshCodeInfo:Futures 
+2026-10-13 00:33:35,200 [DEBUG] TBCommon  TradingDayCache refreshCodeInfo:Futures 
+2026-10-13 00:33:35,200 [DEBUG] TBCommon  TradingDayCache refreshCodeInfo:Stocks 
+2026-10-13 00:33:35,200 [DEBUG] TBCommon  TradingDayCache refreshCodeInfo:Options 
+2026-10-13 00:33:35,205 [TRACE] TBCommon CodePropertyCache getSpecialCodeIDs type=次连类型,size=88,codes=ad777.SHFE;i9777.DCE;PL777.CZCE;CF777.CZCE;LR777.CZCE;pb777.SHFE;RI777.CZCE;au777.SHFE;jm777.DCE;ec777.INE;op777.SHFE;WH777.CZCE;hc777.SHFE;lc777.GFEX;UR777.CZCE;ni777.SHFE;fb777.DCE;SH777.CZCE;eg777.DCE;pt777.GFEX;bb777.DCE;ss777.SHFE;HFE;p9777.DCE;jd777.DCE;rb777.SHFE;ru777.SHFE;SA777.CZCE;IM777.CFFEX;eb777.DCE;IH777.CFFEX;SF777.CZCE;AP777.CZCE;c9777.DCE;rr777.DCE;bz777.DCE;ps777.GFEX;TL777.CFFEX;SM777.CZCE;TA777.CZCE;IF777.CFFEX;PF777.CZCE;IC777.CFFEX;sp777.SHFE;lh777.DCE;CJ777.CZCE;zn777.SHFE;RM777.CZCE;lg777.DCE;a9777.DCE;PR777.CZCE;si777.GFEX;PM777.CZCE;cu777.SHFE;v9777.DCE;PX777.CZCE;MA777.CZCE;RS777.CZCE;m9777.DCE;fu777.SHFE;JR777.CZCE;TS777.CFFEX;PK777.CZCE;lu777.INE;b9777.DCE;TF777.CFFEX;l9777.DCE;pd777.GFEX;y9777.DCE;OI777.CZCE;FG777.CZCE;T9777.CFFEX;pg777.DCE;pp777.DCE;br777.SHFE;j9777.DCE;al777.SHFE;cs777.DCE;sn777.SHFE;wr777.SHFE;bu777.SHFE;nr777.INE;SR777.CZCE;ZC777.CZCE;CY777.CZCE;sc777.INE;bc777.INE;ag777.SHFE;ao777.SHFE; 
+2026-10-13 00:33:35,301 [TRACE] TBCommon CodePropertyCache getSpecialCodeIDs type=连续类型,size=88,codes=ZC888.CZCE;cu888.SHFE;lu888.INE;PK888.CZCE;PF888.CZCE;CY888.CZCE;PR888.CZCE;sp888.SHFE;m9888.DCE;l9888.DCE;rb888.SHFE;CJ888.CZCE;i9888.DCE;pb888.SHFE;bz888.DCE;IF888.CFFEX;TF888.CFFEX;lg888.DCE;v9888.DCE;cs888.DCE;hc888.SHFE;nr888.INE;RNE;RM888.CZCE;p9888.DCE;MA888.CZCE;fu888.SHFE;pt888.GFEX;RS888.CZCE;PX888.CZCE;ps888.GFEX;op888.SHFE;IM888.CFFEX;UR888.CZCE;eb888.DCE;a9888.DCE;FG888.CZCE;rr888.DCE;j9888.DCE;SM888.CZCE;bu888.SHFE;ag888.SHFE;b9888.DCE;br888.SHFE;AP888.CZCE;bb888.DCE;pd888.GFEX;pg888.DCE;SH888.CZCE;sc888.INE;fb888.DCE;OI888.CZCE;ru888.SHFE;SR888.CZCE;y9888.DCE;sn888.SHFE;pp888.DCE;au888.SHFE;T9888.CFFEX;IH888.CFFEX;lc888.GFEX;IC888.CFFEX;TS888.CFFEX;TA888.CZCE;lh888.DCE;ao888.SHFE;c9888.DCE;JR888.CZCE;zn888.SHFE;PM888.CZCE;bc888.INE;ss888.SHFE;ni888.SHFE;al888.SHFE;jm888.DCE;jd888.DCE;TL888.CFFEX;ec888.INE;wr888.SHFE;SF888.CZCE;eg888.DCE;si888.GFEX;WH888.CZCE;PL888.CZCE;RI888.CZCE;SA888.CZCE;ad888.SHFE;CF888.CZCE;LR888.CZCE; 
+2026-10-13 00:33:35,424 [DEBUG] Event ,setName 
+2026-10-13 00:33:35,424 [DEBUG] DCAPI ICETradeProxy stop begin 
+2026-10-13 00:33:35,426 [DEBUG] DCAPI ICETradeProxy stop end 
+2026-10-13 00:33:35,426 [DEBUG] DCAPI ICETradeSimuProxy stop begin 
+2026-10-13 00:33:35,426 [DEBUG] DCAPI ICETradeSimuProxy stop end 
+2026-10-13 00:33:35,426 [DEBUG] DCAPI ICEBaseProxy stop begin 
+2026-10-13 00:33:35,426 [DEBUG] DCAPI IceDataProxy stop begin 
+2026-10-13 00:33:35,426 [DEBUG] DCAPI IceDataProxy stop end ret=OK@ 
+2026-10-13 00:33:35,427 [DEBUG] DCAPI ICEBaseProxy stop end 
+2026-10-13 00:33:35,427 [DEBUG] DCAPI ICEAuthenProxy stop begin 
+2026-10-13 00:33:35,427 [DEBUG] DCAPI release ice,destory communicator start 
+2026-10-13 00:33:35,427 [INFO ] DCAPI connect tbquantdc success 
+2026-10-13 00:33:35,430 [INFO ] DCAPI QuoteHisDispatcher stop begin 
+2026-10-13 00:33:35,430 [INFO ] DCAPI QuoteHisDispatcher stop end 
+2026-10-13 00:33:35,430 [INFO ] DCAPI QuoteRealDispatcher stop begin 
+2026-10-13 00:33:35,430 [INFO ] DCAPI QuoteRealDispatcher stop end 
+2026-10-13 00:33:35,430 [INFO ] DCAPI DataHisDispatcher stop begin 
+2026-10-13 00:33:35,430 [INFO ] DCAPI DataHisDispatcher stop end 
+2026-10-13 00:33:35,430 [INFO ] DCAPI DataRealDispatcher stop begin 
+2026-10-13 00:33:35,430 [INFO ] DCAPI DataRealDispatcher stop end 
+2026-10-13 00:33:35,430 [INFO ] DCAPI CommonDispatcher stop begin 
+2026-10-13 00:33:35,430 [INFO ] DCAPI CommonDispatcher stop end 
+2026-10-13 00:33:35,430 [DEBUG] DCAPI release ice,destory communicator success 
+2026-10-13 00:33:35,430 [INFO ] DCAPI tbdcapi user=,sessionid=2,login out! 
+2026-10-13 00:33:35,430 [DEBUG] DCAPI ICEAuthenProxy stop end 
+2026-10-13 00:33:48,162 [INFO ] TBCommon GetFileVersionInfoSize fail,moduleName:TBCommon  
+2026-10-13 00:33:48,162 [WARN ] TBPY parser_version_str rootPath=C:\Users\du chuan\AppData\Roaming\TBQuant,version= 
+2026-10-13 00:33:48,162 [DEBUG] AuthAgent createService,jsonParam=[{"serviceName":"AuthenService","dllPath":"d:\\PythonProject\\MyTbquant\\.venv\\Lib\\site-packages\\tbpy\\TBDataCenterAPI.dll","procName":"createAuthenService","parameter":{"online":true}},{"serviceName":"BaseService","dllPath":"d:\\PythonProject\\MyTbquant\\.venv\\Lib\\site-packages\\tbpy\\TBDataCenterAPI.dll","procName":"createBaseService","parameter":{"online":true}},{"serviceName":"TradeService","dllPath":"d:\\PythonProject\\MyTbquant\\.venv\\Lib\\site-packages\\tbpy\\TBDataCenterAPI.dll","procName":"createTradeService","parameter":{"online":true}},{"serviceName":"TradeSimuService","dllPath":"d:\\PythonProject\\MyTbquant\\.venv\\Lib\\site-packages\\tbpy\\TBDataCenterAPI.dll","procName":"createTradeSimuService","parameter":{"online":true}}] 
+2026-10-13 00:33:48,165 [INFO ] BaseService HolidayCache construct  
+2026-10-13 00:33:48,165 [TRACE] TBCommon TradingDayCache construct 
+2026-10-13 00:33:48,165 [INFO ] DCAPI QuoteHisDispatcher construct 
+2026-10-13 00:33:48,165 [INFO ] DCAPI QuoteRealDispatcher construct 
+2026-10-13 00:33:48,165 [INFO ] DCAPI DataHisDispatcher construct 
+2026-10-13 00:33:48,165 [INFO ] DCAPI DataRealDispatcher construct 
+2026-10-13 00:33:48,166 [DEBUG] AuthAgent InitService start service begin 
+2026-10-13 00:33:48,166 [DEBUG] DCAPI ICEServiceManager init option=1,port= 
+2026-10-13 00:33:48,166 [DEBUG] DCAPI init ice,start create communicator 
+2026-10-13 00:33:48,166 [TRACE] DCAPI start ice monitor ,check tbquant execute path:C:\Users\du chuan\AppData\Roaming\TBQuant\TBDataCenter\tbquantdc.exe 
+2026-10-13 00:33:48,166 [DEBUG] DCAPI createCommunicator use default config 
+2026-10-13 00:33:48,194 [TRACE] DCAPI shm_info,shm=CUSERSDUCHUANAPPDATAROAMINGTBQUANTTBDATACENTERSHM,mtx=CUSERSDUCHUANAPPDATAROAMINGTBQUANTTBDATACENTERSHMTBPROCESSMTX,endpoint=tcp -h 127.0.0.1 -p 5459 
+2026-10-13 00:33:48,196 [INFO ] DCAPI QuoteHisDispatcher start begin 
+2026-10-13 00:33:48,196 [INFO ] DCAPI QuoteHisDispatcher start end 
+2026-10-13 00:33:48,196 [INFO ] DCAPI QuoteRealDispatcher start begin 
+2026-10-13 00:33:48,196 [INFO ] DCAPI QuoteRealDispatcher start end 
+2026-10-13 00:33:48,196 [INFO ] DCAPI DataHisDispatcher start begin 
+2026-10-13 00:33:48,196 [INFO ] DCAPI DataHisDispatcher start end 
+2026-10-13 00:33:48,196 [INFO ] DCAPI DataRealDispatcher start begin 
+2026-10-13 00:33:48,196 [INFO ] DCAPI DataRealDispatcher start end 
+2026-10-13 00:33:48,196 [INFO ] DCAPI CommonDispatcher construct 
+2026-10-13 00:33:48,196 [INFO ] DCAPI CommonDispatcher start begin 
+2026-10-13 00:33:48,196 [INFO ] DCAPI CommonDispatcher start end 
+2026-10-13 00:33:48,196 [DEBUG] DCAPI init ice,create communicator success 
+2026-10-13 00:33:48,197 [INFO ] DCAPI connect tbquantdc success 
+2026-10-13 00:33:48,199 [DEBUG] DCAPI ICEAuthenProxy start 
+2026-10-13 00:33:48,199 [DEBUG] AuthAgent InitService start service end 
+2026-10-13 00:33:48,199 [DEBUG] AuthAgent InitService end 
+2026-10-13 00:33:48,199 [DEBUG] AuthAgent Login start 
+2026-10-13 00:33:48,199 [DEBUG] AuthAgent Login get host begin 
+2026-10-13 00:33:48,240 [TRACE] DCAPI 获取本机mac地址成功, mac:78AF08402A2708402A27 
+2026-10-13 00:33:48,240 [DEBUG] AuthAgent Login get host end 
+2026-10-13 00:33:48,240 [DEBUG] DCAPI ICEAuthenProxy login start 
+2026-10-13 00:33:48,240 [INFO ] DCAPI try lock process mutex success,mutex key:2tcp-h127001-p5459 
+2026-10-13 00:33:48,240 [INFO ] DCAPI 【softversion】,versionNo=3.12.3,softType=Standard,platformType=TBPYPY 
+2026-10-13 00:33:48,242 [INFO ] DCAPI tbdcapi user=,sessionid=2,login success! 
+2026-10-13 00:33:48,242 [DEBUG] DCAPI ICEAuthenProxy login end 
+2026-10-13 00:33:48,244 [DEBUG] AuthAgent Login end 
+2026-10-13 00:33:48,244 [DEBUG] DCAPI start IceDataProxy, ret=OK@ 
+2026-10-13 00:33:48,244 [DEBUG] DCAPI ICETradeSimuProxy start begin 
+2026-10-13 00:33:48,245 [DEBUG] DCAPI ICETradeSimuProxy start end,OK@ 
+2026-10-13 00:33:48,246 [DEBUG] DCAPI OnRspStatus begin,天风期货@10000115,status=已登录(服务中),no=OK,note=o=OK,note= 
+2026-10-13 00:33:48,246 [DEBUG] DCAPI CacheTradeManager construct 
+2026-10-13 00:33:48,246 [DEBUG] DCAPI OnRspStatus end,天风期货@100001150115 
+2026-10-13 00:33:48,246 [DEBUG] DCAPI OnRspStatus begin,宏源期货@903001871,status=已登录(服务中),no=OK,note=o=OK,note= 
+2026-10-13 00:33:48,246 [DEBUG] DCAPI OnRspStatus end,宏源期货@9030018711871 
+2026-10-13 00:33:48,246 [DEBUG] DCAPI OnRspStatus begin,TB期货模拟@66107987,status=已登录(服务中),no=OK,note=o=OK,note= 
+2026-10-13 00:33:48,246 [DEBUG] DCAPI OnRspStatus end,TB期货模拟@661079877987 
+2026-10-13 00:33:48,246 [DEBUG] DCAPI OnRspStatus begin,TB期货模拟@tbf_fasot1,status=已登录(服务中),no=OK,note=o=OK,note= 
+2026-10-13 00:33:48,246 [DEBUG] DCAPI OnRspStatus end,TB期货模拟@tbf_fasot1sot1 
+2026-10-13 00:33:48,247 [TRACE] DCAPI OnPositionSnapshot,[3],天风期货@10000115@CNY@CHNFuture@Speculatioatio 
+2026-10-13 00:33:48,247 [TRACE] DCAPI OnPositionSnapshot,[7],TB期货模拟@tbf_fasot1@CNY@CHNFuture@Speculatioatio 
+2026-10-13 00:33:48,247 [TRACE] DCAPI OnPositionSnapshot,[7],宏源期货@903001871@CNY@CHNFuture@Speculatioatio 
+2026-10-13 00:33:48,563 [DEBUG] BaseService initBase initConfig,size=3,OK@ 
+2026-10-13 00:33:48,563 [DEBUG] BaseService initBase initConfig,SimuIgnoreDelayMs=3000 
+2026-10-13 00:33:48,563 [DEBUG] BaseService initBase initConfig,SimuMatchDelayMs=3000 
+2026-10-13 00:33:48,563 [DEBUG] BaseService initBase initConfig,SimuLimitCancelCNT=500 
+2026-10-13 00:33:48,563 [DEBUG] BaseService initBase=OK@,initMarket=OK@,initCategory=OK@,initExchange=OK@,lastBase=000001E9BD431C80,nowBase=000001E9BD432B80 
+2026-10-13 00:33:48,563 [DEBUG] BaseService Market,UnknownMarket,0,,category=UnknownCategory|Bonds|Funds,exchange=UnknownExchange 
+2026-10-13 00:33:48,563 [DEBUG] BaseService Market,CHNFuture,1,期货,category=Futures|Options,exchange=SHFE|DCE|CZCE|CFFEX|INE|TBFT|GFEXEX 
+2026-10-13 00:33:48,563 [DEBUG] BaseService Market,CHNStock,2,股票,category=Stocks,exchange=SSE|SZSE|TBST|OTCF|BSESE 
+2026-10-13 00:33:48,563 [DEBUG] BaseService Market,CHNOptions,4,期权,category=,exchange=e= 
+2026-10-13 00:33:48,563 [DEBUG] BaseService Market,GlobalMarket,8,国外期货,category=ForeignFutures,exchange=CBOT|CME|NYBOT|NYMEX|SGX|TOCOM|KRX|LME|ICE|EUREX|LIFFE|BMD|SFE|TFEX|COMEX|APEX|DME|JPX|ECBOT|IPE|WORLDINDEXNDEX 
+2026-10-13 00:33:48,563 [DEBUG] BaseService Market,GlobalStockMarket,16,国外证券,category=ForeignStocks,exchange=HKEX|NYSE|NASDAQ|OSE|OSE 
+2026-10-13 00:33:48,563 [DEBUG] BaseService Market,CHNSpot,32,现货,category=SpotTrans,exchange=BOCE|SGEGE 
+2026-10-13 00:33:48,563 [DEBUG] BaseService Market,Forexs,64,外汇,category=Forexs,exchange=FOREXEX 
+2026-10-13 00:33:48,563 [DEBUG] BaseService Market,TBNews,128,资讯,category=,exchange=e= 
+2026-10-13 00:33:48,563 [DEBUG] BaseService Market,CHNStockSnap,256,查询快照,category=,exchange=nge= 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Market,MobileMonitor,512,移动监控,category=,exchange=nge= 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Category,UnknownCategory,-1,未知,market=UnknownMarket,exchange=UnknownExchangege 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Category,Stocks,0,股票,market=CHNStock,exchange=SSE|SZSE|TBST|OTCF|BSESE 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Category,Futures,1,期货,market=CHNFuture,exchange=SHFE|DCE|CZCE|CFFEX|INE|TBFT|GFEXEX 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Category,Forexs,2,外汇,market=Forexs,exchange=FOREXEX 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Category,Bonds,3,债券,market=UnknownMarket,exchange=e= 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Category,Funds,4,基金,market=UnknownMarket,exchange=e= 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Category,Options,5,期权,market=CHNFuture,exchange=SHFE|DCE|CZCE|CFFEX|INE|SSE|SZSE|BSE|GFEXEX 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Category,SpotTrans,6,现货,market=CHNSpot,exchange=BOCE|SGEGE 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Category,ForeignFutures,7,外盘期货,market=GlobalMarket,exchange=CBOT|CME|NYBOT|NYMEX|HKEX|SGX|TOCOM|KRX|LME|ICE|EUREX|LIFFE|BMD|SFE|TFEX|COMEX|APEX|DME|JPX|ECBOT|IPE|WORLDINDEXNDEX 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Category,ForeignStocks,8,外盘股票,market=GlobalStockMarket,exchange=HKEX|NYSE|NASDAQ|OSE|OSE 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,UnknownExchange,-1,未知,market=UnknownMarketet 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,SHFE,0,上海期货交易所,market=CHNFutureNFuture 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,DCE,1,大连商品交易所,market=CHNFutureNFuture 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,CZCE,2,郑州商品交易所,market=CHNFutureNFuture 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,CFFEX,3,中国金融期货交易所,market=CHNFutureCHNFuture 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,INE,4,上海国际能源交易中心,market=CHNFuture=CHNFuture 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,SSE,5,上海证券交易所,market=CHNStockHNStock 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,SZSE,6,深圳证券交易所,market=CHNStockHNStock 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,BOCE,7,渤海商品交易所,market=CHNSpotCHNSpot 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,SGE,8,上海黄金交易所,market=CHNSpotCHNSpot 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,CBOT,9,芝加哥期货交易所,market=GlobalMarketalMarket 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,CME,10,芝加哥商业交易所,market=GlobalMarketalMarket 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,NYBOT,11,纽约期货交易所,market=GlobalMarketlMarket 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,NYMEX,12,纽约商业期货交易所,market=GlobalMarketbalMarket 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,HKEX,13,香港交易所,market=GlobalStockMarketarket 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,SGX,14,新加坡交易所,market=GlobalMarketMarket 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,TOCOM,15,东京商品交易所,market=GlobalMarketlMarket 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,KRX,16,韩国证券期货交易所,market=GlobalMarketbalMarket 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,LME,17,伦敦金属交易所,market=GlobalMarketlMarket 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,ICE,18,洲际交易所,market=GlobalMarketarket 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,EUREX,19,欧洲期货交易所,market=GlobalMarketlMarket 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,LIFFE,20,伦敦国际金融交易所,market=GlobalMarketbalMarket 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,BMD,21,马来西亚交易所,market=GlobalMarketlMarket 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,SFE,22,悉尼期货交易所,market=GlobalMarketlMarket 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,TFEX,23,泰国期货交易所,market=GlobalMarketlMarket 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,NYSE,24,纽约证券交易所,market=GlobalStockMarketkMarket 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,NASDAQ,25,纳斯达克,market=GlobalStockMarketrket 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,FOREX,26,外汇市场,market=Forexsrexs 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,COMEX,27,纽约金属交易所,market=GlobalMarketlMarket 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,APEX,28,新加坡亚太交易所,market=GlobalMarketalMarket 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,DME,29,迪拜商品交易所,market=GlobalMarketlMarket 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,JPX,30,日本交易所集团,market=GlobalMarketlMarket 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,ECBOT,31,芝加哥电子商品交易所,market=GlobalMarketobalMarket 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,IPE,32,伦敦国际石油交易所,market=GlobalMarketbalMarket 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,OSE,33,大阪证券交易所,market=GlobalStockMarketkMarket 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,WORLDINDEX,34,全球指数,market=GlobalMarketrket 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,TBFT,35,开拓者期货指数,market=CHNFutureNFuture 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,TBST,36,开拓者证券指数,market=CHNStockHNStock 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,OTCF,37,场外基金,market=CHNStocktock 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,BSE,38,北京证券交易所,market=CHNStockHNStock 
+2026-10-13 00:33:48,564 [DEBUG] BaseService Exchange,GFEX,39,广州期货交易所,market=CHNFutureNFuture 
+2026-10-13 00:33:48,656 [INFO ] BaseService HolidayCache construct  
+2026-10-13 00:33:48,684 [TRACE] TBCommon TradingDayCache construct 
+2026-10-13 00:33:48,847 [DEBUG] TBCommon RelativeSymbolCache init,srcSize=1166,cacheMapSize=1166,mainMapSize=7175,sndMainMapSize=4232 
+2026-10-13 00:33:50,048 [DEBUG] TBCommon resetCodePropByRule crb=Futures, CodeProperties size=117131 
+2026-10-13 00:33:50,048 [DEBUG] TBCommon resetCodePropByBigCate begin category=Futures, CodeProperties size=117131 
+2026-10-13 00:33:50,048 [DEBUG] TBCommon CodePropertyCache clearPropByBigCate bigcate= 1,exchsize=7,exchs=SHFE;DCE;CZCE;CFFEX;INE;TBFT;GFEX; 
+2026-10-13 00:33:50,284 [DEBUG] TBCommon CodePropertyCache genTimePeriodsCodes, codeEx=pfcode.SHFE,ret=OK@,dealTimesV2=|21:00-02:30;09:00-11:30;13:00-15:15;||||| 
+2026-10-13 00:33:50,284 [DEBUG] TBCommon CodePropertyCache genTimePeriodsCodes default, codeEx=pscode.SSE,ret=OK@,dealTimesV2=|09:00-15:00;||||| 
+2026-10-13 00:33:50,284 [DEBUG] TBCommon resetCodePropByBigCate end category=Futures 
+2026-10-13 00:33:50,284 [DEBUG] TBCommon  TradingDayCache refreshCodeInfo:Futures 
+2026-10-13 00:33:50,295 [DEBUG] TBCommon  TradingDayCache refreshCodeInfo:Futures 
+2026-10-13 00:33:50,296 [DEBUG] TBCommon  TradingDayCache refreshCodeInfo:Stocks 
+2026-10-13 00:33:50,296 [DEBUG] TBCommon  TradingDayCache refreshCodeInfo:Options 
+2026-10-13 00:33:50,299 [TRACE] TBCommon CodePropertyCache getSpecialCodeIDs type=次连类型,size=88,codes=ad777.SHFE;i9777.DCE;PL777.CZCE;CF777.CZCE;LR777.CZCE;pb777.SHFE;RI777.CZCE;au777.SHFE;jm777.DCE;ec777.INE;op777.SHFE;WH777.CZCE;hc777.SHFE;lc777.GFEX;UR777.CZCE;ni777.SHFE;fb777.DCE;SH777.CZCE;eg777.DCE;pt777.GFEX;bb777.DCE;ss777.SHFE;HFE;p9777.DCE;jd777.DCE;rb777.SHFE;ru777.SHFE;SA777.CZCE;IM777.CFFEX;eb777.DCE;IH777.CFFEX;SF777.CZCE;AP777.CZCE;c9777.DCE;rr777.DCE;bz777.DCE;ps777.GFEX;TL777.CFFEX;SM777.CZCE;TA777.CZCE;IF777.CFFEX;PF777.CZCE;IC777.CFFEX;sp777.SHFE;lh777.DCE;CJ777.CZCE;zn777.SHFE;RM777.CZCE;lg777.DCE;a9777.DCE;PR777.CZCE;si777.GFEX;PM777.CZCE;cu777.SHFE;v9777.DCE;PX777.CZCE;MA777.CZCE;RS777.CZCE;m9777.DCE;fu777.SHFE;JR777.CZCE;TS777.CFFEX;PK777.CZCE;lu777.INE;b9777.DCE;TF777.CFFEX;l9777.DCE;pd777.GFEX;y9777.DCE;OI777.CZCE;FG777.CZCE;T9777.CFFEX;pg777.DCE;pp777.DCE;br777.SHFE;j9777.DCE;al777.SHFE;cs777.DCE;sn777.SHFE;wr777.SHFE;bu777.SHFE;nr777.INE;SR777.CZCE;ZC777.CZCE;CY777.CZCE;sc777.INE;bc777.INE;ag777.SHFE;ao777.SHFE; 
+2026-10-13 00:33:50,355 [TRACE] TBCommon CodePropertyCache getSpecialCodeIDs type=连续类型,size=88,codes=ZC888.CZCE;cu888.SHFE;lu888.INE;PK888.CZCE;PF888.CZCE;CY888.CZCE;PR888.CZCE;sp888.SHFE;m9888.DCE;l9888.DCE;rb888.SHFE;CJ888.CZCE;i9888.DCE;pb888.SHFE;bz888.DCE;IF888.CFFEX;TF888.CFFEX;lg888.DCE;v9888.DCE;cs888.DCE;hc888.SHFE;nr888.INE;RNE;RM888.CZCE;p9888.DCE;MA888.CZCE;fu888.SHFE;pt888.GFEX;RS888.CZCE;PX888.CZCE;ps888.GFEX;op888.SHFE;IM888.CFFEX;UR888.CZCE;eb888.DCE;a9888.DCE;FG888.CZCE;rr888.DCE;j9888.DCE;SM888.CZCE;bu888.SHFE;ag888.SHFE;b9888.DCE;br888.SHFE;AP888.CZCE;bb888.DCE;pd888.GFEX;pg888.DCE;SH888.CZCE;sc888.INE;fb888.DCE;OI888.CZCE;ru888.SHFE;SR888.CZCE;y9888.DCE;sn888.SHFE;pp888.DCE;au888.SHFE;T9888.CFFEX;IH888.CFFEX;lc888.GFEX;IC888.CFFEX;TS888.CFFEX;TA888.CZCE;lh888.DCE;ao888.SHFE;c9888.DCE;JR888.CZCE;zn888.SHFE;PM888.CZCE;bc888.INE;ss888.SHFE;ni888.SHFE;al888.SHFE;jm888.DCE;jd888.DCE;TL888.CFFEX;ec888.INE;wr888.SHFE;SF888.CZCE;eg888.DCE;si888.GFEX;WH888.CZCE;PL888.CZCE;RI888.CZCE;SA888.CZCE;ad888.SHFE;CF888.CZCE;LR888.CZCE; 
+2026-10-13 00:33:50,406 [DEBUG] Event ,setName 
+2026-10-13 00:33:50,861 [DEBUG] DCAPI ICETradeProxy stop begin 
+2026-10-13 00:33:50,862 [DEBUG] DCAPI ICETradeProxy stop end 
+2026-10-13 00:33:50,862 [DEBUG] DCAPI ICETradeSimuProxy stop begin 
+2026-10-13 00:33:50,862 [DEBUG] DCAPI ICETradeSimuProxy stop end 
+2026-10-13 00:33:50,862 [DEBUG] DCAPI ICEBaseProxy stop begin 
+2026-10-13 00:33:50,862 [DEBUG] DCAPI IceDataProxy stop begin 
+2026-10-13 00:33:50,863 [DEBUG] DCAPI IceDataProxy stop end ret=OK@ 
+2026-10-13 00:33:50,863 [DEBUG] DCAPI ICEBaseProxy stop end 
+2026-10-13 00:33:50,863 [DEBUG] DCAPI ICEAuthenProxy stop begin 
+2026-10-13 00:33:50,864 [DEBUG] DCAPI release ice,destory communicator start 
+2026-10-13 00:33:50,864 [INFO ] DCAPI connect tbquantdc success 
+2026-10-13 00:33:50,865 [INFO ] DCAPI QuoteHisDispatcher stop begin 
+2026-10-13 00:33:50,865 [INFO ] DCAPI QuoteHisDispatcher stop end 
+2026-10-13 00:33:50,865 [INFO ] DCAPI QuoteRealDispatcher stop begin 
+2026-10-13 00:33:50,865 [INFO ] DCAPI QuoteRealDispatcher stop end 
+2026-10-13 00:33:50,865 [INFO ] DCAPI DataHisDispatcher stop begin 
+2026-10-13 00:33:50,865 [INFO ] DCAPI DataHisDispatcher stop end 
+2026-10-13 00:33:50,865 [INFO ] DCAPI DataRealDispatcher stop begin 
+2026-10-13 00:33:50,865 [INFO ] DCAPI DataRealDispatcher stop end 
+2026-10-13 00:33:50,865 [INFO ] DCAPI CommonDispatcher stop begin 
+2026-10-13 00:33:50,865 [INFO ] DCAPI CommonDispatcher stop end 
+2026-10-13 00:33:50,865 [DEBUG] DCAPI release ice,destory communicator success 
+2026-10-13 00:33:50,865 [INFO ] DCAPI tbdcapi user=,sessionid=2,login out! 
+2026-10-13 00:33:50,865 [DEBUG] DCAPI ICEAuthenProxy stop end 
