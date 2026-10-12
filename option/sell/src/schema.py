@@ -1,7 +1,7 @@
 """数据库 schema 与初始化。
 
 数据库文件：data/option.db（仅创建空库，不建表）。
-product_info 等表结构见 PRODUCT_INFO_DDL，按需调用 apply_schema() 建表（设计见 docs/库表设计.md §3.5）。
+product_info 表结构见 PRODUCT_INFO_DDL，按需调用 apply_schema() 建表（设计见 docs/库表设计.md §2.5）。本文件当前仅落地 product_info 一张表，其余控制面 / 业务表 DDL 待补。
 """
 import os
 import sqlite3
