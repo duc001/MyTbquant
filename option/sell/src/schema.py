@@ -1,6 +1,6 @@
 """数据库 schema 与初始化。
 
-数据库文件：data/option_sell.db（仅创建空库，不建表）。
+数据库文件：data/option.db（仅创建空库，不建表）。
 product_info 等表结构见 PRODUCT_INFO_DDL，按需调用 apply_schema() 建表（设计见 docs/库表设计.md §3.5）。
 """
 import os
@@ -9,7 +9,7 @@ import sqlite3
 DB_DIR = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data"
 )
-DB_PATH = os.path.join(DB_DIR, "option_sell.db")
+DB_PATH = os.path.join(DB_DIR, "option.db")
 
 PRODUCT_INFO_DDL = """
 CREATE TABLE IF NOT EXISTS product_info (
