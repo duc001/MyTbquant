@@ -179,6 +179,7 @@ class PremiumSource(Protocol):
 
     def is_trading(self) -> bool: ...
     def tick_book(self, symbol: str) -> dict | None: ...
+    def tick_book_batch(self, symbols: list[str]) -> dict[str, dict]: ...
     def close_batch(self, symbols: list[str]) -> dict[str, tuple[float | None, dt.date | None]]: ...
 
 
@@ -318,26 +319,55 @@ class TbpyPremiumSource:
         return True
 
     def tick_book(self, symbol: str) -> dict | None:
-        """盘中取 tick 盘口 → {bid, ask, last, bar_date}；拿不到 → None。"""
-        if not self._connect():
-            return None
-        try:
-            t = self._tbpy.get_current_tick(symbol=symbol)
-            if t is None:
-                return None
-            # 期权 tick 的 bidasks[0] 为买一卖一
-            bidasks = _safe_attr(t, "bidasks")
-            bid = ask = None
-            if bidasks and len(bidasks) > 0:
-                ba = bidasks[0]
-                bid = _pos_float(getattr(ba, "bid_p", None) if hasattr(ba, "bid_p") else (ba[0] if len(ba) > 0 else None))
-                ask = _pos_float(getattr(ba, "ask_p", None) if hasattr(ba, "ask_p") else (ba[1] if len(ba) > 1 else None))
-            last = _pos_float(_safe_attr(t, "last"))
-            if last is None and bid is None and ask is None:
-                return None
-            return {"bid": bid, "ask": ask, "last": last, "bar_date": dt.date.today()}
-        except Exception:
-            return None
+        """盘中取单合约 tick 盘口 → {bid, ask, last, bar_date}；拿不到 → None。
+
+        实测（2026-10-14 沪金夜盘）：``get_current_tick`` 必须传 **list**——
+        传单个字符串会**静默返回 None**（不报错）。故单合约也走批量。
+        """
+        return self.tick_book_batch([symbol]).get(symbol)
+
+    def tick_book_batch(self, symbols: list[str]) -> dict[str, dict]:
+        """盘中批量取 tick 盘口 → {symbol: {bid, ask, last, bar_date, snapshot_time}}。
+
+        同 D08 实测要点：必须传 list；返回条数 ≤ 传入数（无实时行情的合约缺席
+        且不报错，按 MISSING 处理）；限流 1 次/60s、单次 ≤20 合约 → ≤20/批 + 批间 62s。
+        """
+        out: dict[str, dict] = {}
+        syms = list(dict.fromkeys(s for s in symbols if s))
+        if not syms or not self._connect():
+            return out
+        tbpy = self._tbpy
+        for i, chunk in enumerate(_chunk(syms, BATCH_MAX)):
+            if i > 0:
+                time.sleep(COOLDOWN)
+            try:
+                r = tbpy.get_current_tick(symbol=chunk)
+            except Exception as e:
+                self.last_error = f"get_current_tick 异常：{type(e).__name__}: {e}"
+                continue
+            if not r:
+                self.last_error = tbpy.get_last_err() or None
+                continue
+            for t in r:
+                if t is None:
+                    continue
+                sym = getattr(t, "symbol", None)
+                if sym is None:
+                    continue
+                # 期权 tick 的 bidasks[0] 为买一卖一
+                bidasks = _safe_attr(t, "bidasks")
+                bid = ask = None
+                if bidasks and len(bidasks) > 0:
+                    ba = bidasks[0]
+                    bid = _pos_float(getattr(ba, "bid_p", None) if hasattr(ba, "bid_p") else (ba[0] if len(ba) > 0 else None))
+                    ask = _pos_float(getattr(ba, "ask_p", None) if hasattr(ba, "ask_p") else (ba[1] if len(ba) > 1 else None))
+                last = _pos_float(_safe_attr(t, "last"))
+                if last is None and bid is None and ask is None:
+                    continue
+                out[sym] = {"bid": bid, "ask": ask, "last": last,
+                            "bar_date": dt.date.today(),
+                            "snapshot_time": getattr(t, "time", None)}
+        return out
 
     def close_batch(self, symbols: list[str]) -> dict[str, tuple[float | None, dt.date | None]]:
         """盘后批量取日线 close（≤20/批 + 62s 冷却）。"""
@@ -521,11 +551,10 @@ def fetch_premium(contracts: list, today: dt.date, *,
         try:
             is_live = src.is_trading()
             if is_live:
-                # 盘中：逐合约 tick 盘口
-                for sym in missing_syms:
-                    t = src.tick_book(sym)
-                    if t is not None:
-                        fetched[sym] = {**t, "source": "tick"}
+                # 盘中：批量 tick 盘口（必须传 list；≤20/批 + 批间 62s）
+                book_data = src.tick_book_batch(missing_syms)
+                for sym, t in book_data.items():
+                    fetched[sym] = {**t, "source": "tick"}
             else:
                 # 盘后：批量日线 close
                 close_data = src.close_batch(missing_syms)
