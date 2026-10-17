@@ -2,10 +2,7 @@
 import os
 import sqlite3
 
-try:  # 作为包内模块
-    from .schema import DB_PATH
-except ImportError:  # 作为脚本直接运行
-    from schema import DB_PATH
+from .schema import DB_PATH
 
 
 def connect(db_path: str = DB_PATH) -> sqlite3.Connection:

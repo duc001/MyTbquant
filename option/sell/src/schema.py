@@ -26,9 +26,9 @@ CREATE TABLE IF NOT EXISTS global_config (      -- KV 配置，业务复合键 (
 """
 
 DATA_STORAGE_RULE_DDL = """
-CREATE TABLE IF NOT EXISTS data_storage_rule (  -- 取数契约（声明面，一取数单元一行）
+CREATE TABLE IF NOT EXISTS data_storage_rule (  -- 元数据表（一张表一行，manual 维护、无外部拉取源）
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    table_ref    TEXT UNIQUE,   -- 物理表引用＝取数单元唯一键 + 对账连接键
+    table_ref    TEXT UNIQUE,   -- 物理表引用＝唯一键（一张表一行）+ 与 data_state_check 对账连接键
     table_name   TEXT,          -- 表名（人读）
     date_type    TEXT,          -- bar / static（本库无 tick 档）
     data_source  TEXT,          -- 主数据源（tbpy / openvlab / manual）

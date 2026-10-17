@@ -13,4 +13,7 @@ __pycache__/
 
 # 运行时数据：行情缓存 db、positions.db、main_month.json 均按用户要求入库跟踪
 
+# option/sell 本地调试日志（调试用，不入库跟踪）
+option/sell/logs/
+
 log/  

@@ -4,12 +4,17 @@ version = "0.1.0"
 requires-python = ">=3.12"
 dependencies = [
     "numpy>=1.26",
+    "pyviz-comms>=3.0.6",
     "tbpy",
 ]
 
-# tbpy 未发布到 PyPI，来自本地 whl（下载路径见 readme）。换机器时请相应调整此路径。
+# tbpy 未发布到 PyPI，来自本地 whl（随 TBQuant 客户端分发，位于其漫游目录）。换机器时请相应调整此路径。
 [tool.uv.sources]
-tbpy = { path = "C:/Users/du chuan/Downloads/tbpy-3.12.3-py3-none-any.whl" }
+tbpy = { path = "C:/Users/du chuan/AppData/Roaming/TBQuant/tbpy/tbpy-3.12.3-py3-none-any.whl" }
 
 [tool.pytest.ini_options]
 pythonpath = ["strategies", "strategies/sell_option", "."]
+
+# SQL 方言：本项目用 SQLite（供 SQLFluff 及读取该配置的 IDE 扩展使用）
+[tool.sqlfluff]
+dialect = "sqlite"

@@ -8,13 +8,15 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "numpy" },
+    { name = "pyviz-comms" },
     { name = "tbpy" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "numpy", specifier = ">=1.26" },
-    { name = "tbpy", path = "C:/Users/du chuan/Downloads/tbpy-3.12.3-py3-none-any.whl" },
+    { name = "pyviz-comms", specifier = ">=3.0.6" },
+    { name = "tbpy", path = "C:/Users/du chuan/AppData/Roaming/TBQuant/tbpy/tbpy-3.12.3-py3-none-any.whl" },
 ]
 
 [[package]]
@@ -91,9 +93,30 @@ wheels = [
 ]
 
 [[package]]
+name = "param"
+version = "2.4.2"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/17/fc/ec34c6fa440c9b5491ee1820874b8776489756820bba16d55b885d07655a/param-2.4.2.tar.gz", hash = "sha256:40ca94b72c97bf1998325738e002d589ce31a7cfb4cc56549f05daa6ccf98043", size = 225945, upload-time = "2026-09-03T11:02:01.717Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/35/94/ff5ad5b758c61c1b33755e02c3a653d1d41c36891329e76a8e6b6e69e8b1/param-2.4.2-py3-none-any.whl", hash = "sha256:56f56e991d11cdf9fa8248ca3b1c7d5badfd6b4da3b3886b764b95823d270b07", size = 155563, upload-time = "2026-09-03T11:02:00.069Z" },
+]
+
+[[package]]
+name = "pyviz-comms"
+version = "3.0.6"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "param" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/da/ee/2b5367b911bab506662abffe6f342101a9b3edacee91ff9afe62db5fe9a7/pyviz_comms-3.0.6.tar.gz", hash = "sha256:73d66b620390d97959b2c4d8a2c0778d41fe20581be4717f01e46b8fae8c5695", size = 197772, upload-time = "2025-06-20T16:50:30.97Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/13/5a/f8c0868199bbb231a02616286ce8a4ccb85f5387b9215510297dcfedd214/pyviz_comms-3.0.6-py3-none-any.whl", hash = "sha256:4eba6238cd4a7f4add2d11879ce55411785b7d38a7c5dba42c7a0826ca53e6c2", size = 84275, upload-time = "2025-06-20T16:50:28.826Z" },
+]
+
+[[package]]
 name = "tbpy"
 version = "3.12.3"
-source = { path = "C:/Users/du chuan/Downloads/tbpy-3.12.3-py3-none-any.whl" }
+source = { path = "C:/Users/du chuan/AppData/Roaming/TBQuant/tbpy/tbpy-3.12.3-py3-none-any.whl" }
 wheels = [
     { filename = "tbpy-3.12.3-py3-none-any.whl", hash = "sha256:ed4976af839f5358becd951ea84f17174f7dc600ec3a23d5808696d0c857385a" },
 ]

@@ -5,13 +5,9 @@
 """
 import os
 import sqlite3
+import sys
 
-try:  # 作为包内模块
-    from ..schema import DB_PATH, apply_schema
-except ImportError:  # 作为脚本直接运行
-    import sys
-    sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    from schema import DB_PATH, apply_schema
+from ..schema import DB_PATH, apply_schema
 
 
 def load_future_info(md_path: str, db_path: str = DB_PATH) -> int:
