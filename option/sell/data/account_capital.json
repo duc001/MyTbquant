@@ -1,12 +1,12 @@
 {
-  "pull_date": "YYYY-MM-DD",
-  "schema_note": "账户资金由人工维护、不入库（见 库表设计.md §3.6）。示例中数值为占位 null；按券商结算单填写实际数值。缺失项填 null（阶段二判 MISSING，绝不当 0）。derived 三列（margin_used/positions_value/profit）可由 account_position 同 pull_date 汇总补算，也可人工填。account_type：live=实盘、sim=模拟。",
+  "pull_date": "2026-10-17",
+  "schema_note": "账户资金由人工维护、不入库（见 库表设计.md §3.6）。两个实盘账号(10000115、903001871)均为策略交易账户（无单一「策略账户」区分）；模拟(sim)不交易、不监控资金。仅实盘(account_type=live)需维护/监控资金；模拟资金项一律留空。manual 项缺失填 null（阶段二对实盘判 MISSING，绝不当 0）。derived 三列(margin_used/positions_value/profit)可由 account_position 同 pull_date 汇总补算。",
   "accounts": [
     {
       "account_id": "10000115",
       "broker_id": 51,
       "account_type": "live",
-      "total_asset": null,
+      "total_asset": 80000.0,
       "available": null,
       "cash": null,
       "frozen": null,
@@ -16,7 +16,7 @@
       "positions_value": null,
       "profit": null,
       "data_source": "manual",
-      "remark": "实盘"
+      "remark": "实盘；策略交易账户之一（与 903001871 同为策略下单账户）；权益(总资产) 8 万，2026-10-17 人工提供；可用资金/保证金/风险度等未提供 → 按 MISSING 处理"
     },
     {
       "account_id": "tbf_fasot1",
@@ -32,7 +32,7 @@
       "positions_value": null,
       "profit": null,
       "data_source": "manual",
-      "remark": "模拟"
+      "remark": "模拟；不监控资金（资金项留空）"
     },
     {
       "account_id": "66107987",
@@ -48,13 +48,13 @@
       "positions_value": null,
       "profit": null,
       "data_source": "manual",
-      "remark": "模拟"
+      "remark": "模拟；不监控资金（资金项留空）"
     },
     {
       "account_id": "903001871",
       "broker_id": 98,
       "account_type": "live",
-      "total_asset": null,
+      "total_asset": 100000.0,
       "available": null,
       "cash": null,
       "frozen": null,
@@ -64,7 +64,7 @@
       "positions_value": null,
       "profit": null,
       "data_source": "manual",
-      "remark": "实盘；含期权义务仓 m2701-P-3300.DCE（实测 s_use_margin_amount=0，见 Q10）；策略账户见 §2.1 account.strategy_id"
+      "remark": "实盘；策略交易账户之一（与 10000115 同为策略下单账户）；权益(总资产) 10 万，2026-10-17 人工提供；含期权义务仓 m2701-P-3300.DCE(s_use_margin_amount=0，见 §七 Q10)"
     }
   ]
 }
